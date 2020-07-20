@@ -1,11 +1,18 @@
 package com.bookstore.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class Users {
 	private Integer userId;
 	private String email;
 	private String fullName;
 	private String password;
 
+	@Column(name = "user_id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getUserId() {
 		return userId;
 	}
@@ -14,6 +21,7 @@ public class Users {
 		this.userId = userId;
 	}
 
+	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -22,6 +30,7 @@ public class Users {
 		this.email = email;
 	}
 
+	@Column(name = "full_name")
 	public String getFullName() {
 		return fullName;
 	}
@@ -30,6 +39,7 @@ public class Users {
 		this.fullName = fullName;
 	}
 
+	@Column(name = "password")
 	public String getPassword() {
 		return password;
 	}
