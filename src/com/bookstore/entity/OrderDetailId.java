@@ -1,5 +1,5 @@
 package com.bookstore.entity;
-// Generated Jul 21, 2020 12:05:41 AM by Hibernate Tools 5.2.12.Final
+// Generated Jul 21, 2020 12:53:05 AM by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
