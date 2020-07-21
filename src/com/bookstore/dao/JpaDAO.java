@@ -10,16 +10,16 @@ public class JpaDAO<E> {
 		this.entityManager = entityManager;
 	}
 	
-	public E create(E e) {
+	public E create(E entity) {
 		entityManager.getTransaction().begin();
 		
-		entityManager.persist(e);
+		entityManager.persist(entity);
 		entityManager.flush();
-		entityManager.refresh(e);
+		entityManager.refresh(entity);
 		
 		entityManager.getTransaction().commit();
 		
-		return e;
+		return entity;
 	}
 
 }
