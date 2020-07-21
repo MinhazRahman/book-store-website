@@ -7,7 +7,26 @@
 <title>My Bookstore - Buy books online</title>
 </head>
 <body>
-	<h1>Welcome to My Bookstore</h1>
+
+	<jsp:directive.include  file = "header.jsp"/>
+	
+	<br/><br/>
+	<div align = "center">
+		<h2>New Books</h2>
+	</div>
+	
+	<div align = "center">
+		<h2>Best selling Books</h2>
+	</div>
+	
+	<div align = "center">
+		<h2>Most-favored Books </h2>
+	</div>
+	
+	<br/><br/>
+	
+	<jsp:directive.include  file = "footer.jsp"/>
+	
 
 </body>
 </html>
