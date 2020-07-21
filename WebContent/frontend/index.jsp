@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book Store Website</title>
+<title>My Bookstore - Buy books online</title>
 </head>
 <body>
-	<h1>Welcome to my book store</h1>
+	<h1>Welcome to My Bookstore</h1>
 
 </body>
 </html>
