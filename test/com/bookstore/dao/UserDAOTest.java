@@ -1,6 +1,7 @@
 package com.bookstore.dao;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,6 +51,27 @@ public class UserDAOTest {
 		
 		userDAO.create(user);
 	}
+	
+	@Test
+	public void testUpdateUsers() {
+		//create an instance of Users
+		Users user = new Users();
+		Users updatedUser;
+		
+		//update user information
+		user.setUserId(30);
+		user.setEmail("test_update@example.com");
+		user.setFullName("Jeffry Thompson");
+		user.setPassword("password");
+		
+		updatedUser = userDAO.update(user);
+		
+		String expected = updatedUser.getPassword();
+		String actual = "password";
+		
+		assertEquals(expected, actual);
+	}
+	
 
 	@AfterClass
 	public static void tearDown() {
