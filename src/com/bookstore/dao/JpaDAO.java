@@ -18,7 +18,6 @@ public class JpaDAO<T> {
 		entityManager.refresh(t);
 		
 		entityManager.getTransaction().commit();
-		entityManager.close();
 		
 		return t;
 	}
