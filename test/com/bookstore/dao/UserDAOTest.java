@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,7 +17,7 @@ public class UserDAOTest {
 	private static EntityManagerFactory entityManagerFactory;
 	private static EntityManager entityManager;
 	private static UserDAO userDAO;
-	
+
 	@BeforeClass
 	public static void setUp() {
 		// create a EntityManager instance from EntityManagerFactory
@@ -38,10 +39,18 @@ public class UserDAOTest {
 		user.setPassword("mirandapass");
 
 		returnedUser = userDAO.create(user);
-		
-		assertTrue(returnedUser.getUserId()> 0);
+
+		assertTrue(returnedUser.getUserId() > 0);
 	}
-	
+
+	@Test(expected = PersistenceException.class)
+	public void testCreateUsersFieldsNotSet() {
+		// create Users instance
+		Users user = new Users();
+		
+		userDAO.create(user);
+	}
+
 	@AfterClass
 	public static void tearDown() {
 		// close EntityManager and EntityManagerFactory instances
