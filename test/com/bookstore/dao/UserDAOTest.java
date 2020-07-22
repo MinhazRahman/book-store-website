@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -110,6 +112,13 @@ public class UserDAOTest {
 	public void testDeleteUsersNotPresent() {
 		Integer userId = 99;
 		userDAO.delete(userId);
+	}
+	
+	@Test
+	public void testListAllUsers() {
+		List<Users> listUsers = userDAO.listAll();
+		
+		assertTrue(listUsers.size() > 0);
 	}
 
 	@AfterClass
