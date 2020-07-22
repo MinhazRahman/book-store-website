@@ -87,13 +87,22 @@ public class UserDAOTest {
 		
 	}
 	
-	@Test()
+	@Test
 	public void testGetUsersNotFound() {
 		Integer userId = 100;
 		Users user = userDAO.get(userId);
 		
 		assertNull(user);
+	}
+	
+	@Test
+	public void testDeleteUsers() {
+		Integer userId = 29;
+		userDAO.delete(userId);
 		
+		Users user = userDAO.get(userId);
+		
+		assertNull(user);
 	}
 	
 
