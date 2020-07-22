@@ -41,5 +41,14 @@ public class JpaDAO<E> {
 		
 		return entity;
 	}
+	
+	public void delete(Class<E> type, Object id) {
+		entityManager.getTransaction().begin();
+		
+		Object reference = entityManager.getReference(type, id);
+		entityManager.remove(reference);
+		
+		entityManager.getTransaction().commit();
+	}
 
 }
