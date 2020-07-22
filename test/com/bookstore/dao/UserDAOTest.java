@@ -1,5 +1,6 @@
 package com.bookstore.dao;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -70,6 +71,20 @@ public class UserDAOTest {
 		String actual = "password";
 		
 		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testGetUsersFound() {
+		Integer userId = 30;
+		Users user = userDAO.get(userId);
+		
+		String expectedEmail = "test_update@example.com";
+		String actualEmail = user.getEmail();
+		
+		assertNotNull(user);
+		assertEquals(expectedEmail, actualEmail);
+		
+		
 	}
 	
 
