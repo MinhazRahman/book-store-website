@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
@@ -105,6 +106,11 @@ public class UserDAOTest {
 		assertNull(user);
 	}
 	
+	@Test(expected = EntityNotFoundException.class)
+	public void testDeleteUsersNotPresent() {
+		Integer userId = 99;
+		userDAO.delete(userId);
+	}
 
 	@AfterClass
 	public static void tearDown() {
