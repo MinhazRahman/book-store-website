@@ -120,6 +120,13 @@ public class UserDAOTest {
 		
 		assertTrue(listUsers.size() > 0);
 	}
+	
+	@Test
+	public void testCountUsers() {
+		long numberOfUsers = userDAO.count();
+		
+		assertTrue(numberOfUsers > 0);
+	}
 
 	@AfterClass
 	public static void tearDown() {
