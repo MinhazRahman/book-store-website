@@ -18,7 +18,7 @@
 	
 	<c:if test="${message != null}">
 		<div align = "center">
-			<h3><i>"${message}"</i></h3>
+			<h3><i>${message}</i></h3>
 		</div>
 	</c:if>
 
