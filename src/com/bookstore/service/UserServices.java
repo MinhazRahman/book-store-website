@@ -21,39 +21,51 @@ public class UserServices {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public UserServices(HttpServletRequest request,HttpServletResponse response ) {
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
 		entityManager = entityManagerFactory.createEntityManager();
 		userDAO = new UserDAO(entityManager);
 	}
-	
+
 	public void listUser() throws ServletException, IOException {
 		listUser(null);
 	}
 
 	public void listUser(String message) throws ServletException, IOException {
 		List<Users> listUsers = userDAO.listAll();
-		
+
 		request.setAttribute("listUsers", listUsers);
-		
-		if(message != null) {
+
+		if (message != null) {
 			request.setAttribute("message", message);
 		}
-		
+
 		String listPage = "user_list.jsp";
-		RequestDispatcher requestDispatcher =  request.getRequestDispatcher(listPage);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		requestDispatcher.forward(request, response);
 	}
-	
-	public void createUser() {
+
+	public void createUser() throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		
-		Users newUser = new Users(email, fullName, password);
-		userDAO.create(newUser);
+
+		Users user = userDAO.findByEmail(email);
+
+		if (user != null) {
+			String message = "Could not create a user. A user with email " + email + " already exists!";
+
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			Users newUser = new Users(email, fullName, password);
+			userDAO.create(newUser);
+			listUser("New User Created Successfully!");
+		}
+
 	}
 
 }
