@@ -50,6 +50,16 @@ public class CategoryDAOTest extends BaseDAOTest {
 		assertNotNull(updatedCategory);
 		assertEquals(expectedCategoryName, actualCategoryName);
 	}
+	
+	@Test
+	public void testGetCategory() {
+		int categoryId = 20;
+		
+		Category category = categoryDAO.get(categoryId);
+		
+		assertNotNull(category);
+		assertEquals(categoryId, category.getCategoryId());
+	}
 
 	@AfterClass
 	public static void tearDown() {
