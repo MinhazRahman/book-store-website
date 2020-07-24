@@ -38,13 +38,12 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
 	@Override
 	public List<Category> listAll() {
 		
-		return null;
+		return super.findWithNamedQuery("Category.findAll");
 	}
 
 	@Override
 	public long count() {
-		
-		return 0;
+		return super.countWithNamedQuery("Category.countAll");
 	}
 
 }
