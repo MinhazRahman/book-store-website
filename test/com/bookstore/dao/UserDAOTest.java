@@ -19,17 +19,13 @@ import org.junit.Test;
 
 import com.bookstore.entity.Users;
 
-public class UserDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class UserDAOTest extends BaseDAOTest{
+	
 	private static UserDAO userDAO;
 
 	@BeforeClass
 	public static void setUp() {
-		// create a EntityManager instance from EntityManagerFactory
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = entityManagerFactory.createEntityManager();
-
+		BaseDAOTest.setUp();
 		// create a user into the database
 		userDAO = new UserDAO(entityManager);
 	}
@@ -138,9 +134,7 @@ public class UserDAOTest {
 
 	@AfterClass
 	public static void tearDown() {
-		// close EntityManager and EntityManagerFactory instances
-		entityManager.close();
-		entityManagerFactory.close();
+		BaseDAOTest.tearDown();
 	}
 
 }
