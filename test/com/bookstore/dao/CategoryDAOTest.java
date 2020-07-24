@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -79,6 +81,22 @@ public class CategoryDAOTest extends BaseDAOTest {
 		
 		Category category = categoryDAO.get(categoryId);
 		assertNull(category);
+	}
+	
+	@Test
+	public void testListAllCategory() {
+		List<Category> listCategory = categoryDAO.listAll();
+		
+		listCategory.forEach(c -> System.out.println(c.getName()));
+		assertTrue(listCategory.size() > 0);
+	}
+	
+	@Test
+	public void testCountCategory() {
+		long numberOfCatetories = categoryDAO.count();
+		
+		System.out.println(numberOfCatetories);
+		assertEquals(16, numberOfCatetories);
 	}
 
 	@AfterClass
