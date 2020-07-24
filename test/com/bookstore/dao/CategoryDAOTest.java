@@ -1,6 +1,7 @@
 package com.bookstore.dao;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -59,6 +60,16 @@ public class CategoryDAOTest extends BaseDAOTest {
 		
 		assertNotNull(category);
 		assertEquals(categoryId, category.getCategoryId());
+	}
+	
+	@Test
+	public void testGetCategoryNotFound() {
+		int categoryId = 99;
+		
+		Category category = categoryDAO.get(categoryId);
+		
+		assertNull(category);
+		
 	}
 
 	@AfterClass
