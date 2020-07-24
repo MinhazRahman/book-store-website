@@ -2,6 +2,7 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,8 +14,8 @@ import org.junit.Test;
 
 import com.bookstore.entity.Category;
 
-public class CategoryDAOTest extends BaseDAOTest{
-	
+public class CategoryDAOTest extends BaseDAOTest {
+
 	private static CategoryDAO categoryDAO;
 
 	@BeforeClass
@@ -23,18 +24,33 @@ public class CategoryDAOTest extends BaseDAOTest{
 		// create a user into the database
 		categoryDAO = new CategoryDAO(entityManager);
 	}
-	
+
 	@Test
 	public void testCreateCategory() {
-		//create an instance
+		// create an instance
 		Category newCategory = new Category("Lifestyle");
-		
+
 		Category category = categoryDAO.create(newCategory);
-		
+
 		assertNotNull(category);
-		assertTrue(category.getCategoryId() > 0);	
+		assertTrue(category.getCategoryId() > 0);
 	}
-	
+
+	@Test
+	public void testUpdateCategory() {
+		// create an instance
+		Category categoryToBeUpdated = new Category("Lifestyle");
+		categoryToBeUpdated.setCategoryId(11);
+
+		Category updatedCategory = categoryDAO.update(categoryToBeUpdated);
+		
+		String expectedCategoryName = categoryToBeUpdated.getName();
+		String actualCategoryName = updatedCategory.getName();
+
+		assertNotNull(updatedCategory);
+		assertEquals(expectedCategoryName, actualCategoryName);
+	}
+
 	@AfterClass
 	public static void tearDown() {
 		BaseDAOTest.setUp();
