@@ -13,17 +13,13 @@ import org.junit.Test;
 
 import com.bookstore.entity.Category;
 
-public class CategoryDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class CategoryDAOTest extends BaseDAOTest{
+	
 	private static CategoryDAO categoryDAO;
 
 	@BeforeClass
 	public static void setUp() {
-		// create a EntityManager instance from EntityManagerFactory
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = entityManagerFactory.createEntityManager();
-
+		BaseDAOTest.setUp();
 		// create a user into the database
 		categoryDAO = new CategoryDAO(entityManager);
 	}
@@ -41,8 +37,6 @@ public class CategoryDAOTest {
 	
 	@AfterClass
 	public static void tearDown() {
-		// close EntityManager and EntityManagerFactory instances
-		entityManager.close();
-		entityManagerFactory.close();
+		BaseDAOTest.setUp();
 	}
 }
