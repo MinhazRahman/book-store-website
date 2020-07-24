@@ -71,6 +71,15 @@ public class CategoryDAOTest extends BaseDAOTest {
 		assertNull(category);
 		
 	}
+	
+	@Test
+	public void testDeleteCategory() {
+		int categoryId = 11;
+		categoryDAO.delete(categoryId);
+		
+		Category category = categoryDAO.get(categoryId);
+		assertNull(category);
+	}
 
 	@AfterClass
 	public static void tearDown() {
