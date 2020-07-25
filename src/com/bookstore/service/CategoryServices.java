@@ -15,16 +15,11 @@ import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
 
-public class CategoryServices {
-	private EntityManager entityManager;
+public class CategoryServices extends BaseServices{
 	private CategoryDAO categoryDAO;
-	private HttpServletRequest request;
-	private HttpServletResponse response;
 
 	public CategoryServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.request = request;
-		this.response = response;
-		this.entityManager = entityManager;
+		super(entityManager, request, response);
 		categoryDAO = new CategoryDAO(entityManager);
 	}
 	

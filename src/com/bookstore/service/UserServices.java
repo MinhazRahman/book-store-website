@@ -14,16 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Users;
 
-public class UserServices {
-	private EntityManager entityManager;
+public class UserServices extends BaseServices{
 	private UserDAO userDAO;
-	private HttpServletRequest request;
-	private HttpServletResponse response;
 
 	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.request = request;
-		this.response = response;
-		this.entityManager = entityManager;
+		super(entityManager, request, response);
 		userDAO = new UserDAO(entityManager);
 	}
 
