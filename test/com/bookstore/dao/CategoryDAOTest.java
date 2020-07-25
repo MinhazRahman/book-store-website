@@ -98,6 +98,24 @@ public class CategoryDAOTest extends BaseDAOTest {
 		System.out.println(numberOfCatetories);
 		assertEquals(16, numberOfCatetories);
 	}
+	
+	@Test 
+	public void testFindByNameCategory() {
+		String categoryName = "Health";
+		
+		Category category = categoryDAO.findByName(categoryName);
+		
+		assertNotNull(category);
+	}
+	
+	@Test 
+	public void testFindByNameCategoryNotFound() {
+		String categoryName = "Computing";
+		
+		Category category = categoryDAO.findByName(categoryName);
+		
+		assertNull(category);
+	}
 
 	@AfterClass
 	public static void tearDown() {
