@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookstore.controller.admin.BaseServlet;
 import com.bookstore.service.CategoryServices;
 
 /*When we click on the Categories link on the home page,
@@ -15,7 +16,7 @@ import com.bookstore.service.CategoryServices;
  * 
  * */
 @WebServlet("/admin/list_category")
-public class ListCategoryServlet extends HttpServlet {
+public class ListCategoryServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     public ListCategoryServlet() {
@@ -25,7 +26,7 @@ public class ListCategoryServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("List Categories");
-		CategoryServices categoryServices = new CategoryServices(request, response);
+		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
 		categoryServices.listCategory();
 	}
 
