@@ -5,7 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create New Category</title>
+<title>
+
+	<c:if test="${category != null}">
+		Edit Category
+	</c:if>
+			
+	<c:if test="${category == null}">
+		Create New Category
+	</c:if>
+
+</title>
 </head>
 <body>
 
