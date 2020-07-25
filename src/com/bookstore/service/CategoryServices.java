@@ -66,4 +66,20 @@ public class CategoryServices extends BaseServices{
 		}
 	}
 
+	public void editCategory() throws ServletException, IOException {
+		// get the parameters from the request
+		int categoryId = Integer.parseInt(request.getParameter("id"));
+		
+		// find the category using the id
+		Category category = categoryDAO.get(categoryId);
+		
+		// set the category object as the attribute of request object
+		request.setAttribute("category", category);
+		
+		// forward the request to the edit page (category_form.jsp file)
+		String editPage = "category_form.jsp";
+		RequestDispatcher  requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);	
+	}
+
 }
