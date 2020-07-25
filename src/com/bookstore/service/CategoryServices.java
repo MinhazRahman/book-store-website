@@ -16,17 +16,15 @@ import com.bookstore.entity.Category;
 
 
 public class CategoryServices {
-	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 	private CategoryDAO categoryDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public CategoryServices(HttpServletRequest request, HttpServletResponse response) {
+	public CategoryServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = entityManagerFactory.createEntityManager();
+		this.entityManager = entityManager;
 		categoryDAO = new CategoryDAO(entityManager);
 	}
 	
