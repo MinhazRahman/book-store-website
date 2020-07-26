@@ -52,10 +52,10 @@
 </body>
 
 	<script>
-		// on confirmation send the request to the DeleteUserServlet
+		// on confirmation send the request to the DeleteCategoryServlet class
 		function confirmDelete(categoryId){
-			if(confirm("Are you sure, you want to delete your user with id " + categoryId + "?" )){
-				window.location = "delete_category?userId=" + categoryId;
+			if(confirm("Are you sure, you want to delete your category with id " + categoryId + "?" )){
+				window.location = "delete_category?categoryId=" + categoryId;
 			}
 		}
 	
