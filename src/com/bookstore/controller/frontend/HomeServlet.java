@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookstore.controller.BaseServlet;
+
 //HomeServlet receives a request, processes it and finally
 //forwards the request to the destination JSP page, index.jsp
 @WebServlet("")
-public class HomeServlet extends HttpServlet {
+public class HomeServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	public HomeServlet() {
