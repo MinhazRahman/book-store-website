@@ -105,4 +105,32 @@ public class CategoryServices extends BaseServices {
 		}
 	}
 
+	public void deleteCategory() throws ServletException, IOException {
+		// get parameters from request object
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		
+		// find the category by id in the database and 
+		// if the category is not found then show the error message
+		Category category = categoryDAO.get(categoryId);
+		if(category == null) {
+			String message = "Couldn't find the category with id " + categoryId + 
+								", or it might have been deleted!!";
+			request.setAttribute("message", message);
+			// get RequestDispatcher object and 
+			// forward the request and response to message.jsp file
+			String resource = "message.jsp";
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(resource);
+			requestDispatcher.forward(request, response);
+			return;	
+		}else {
+			
+			// delete category from the database
+			categoryDAO.delete(categoryId);
+			
+			// show the updated list of categories
+			String message = "Category has been deleted successfully!!";
+			listCategory(message);
+		}
+	}
+
 }
