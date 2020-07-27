@@ -19,7 +19,7 @@
   					</div>
 				</div>
   			</form>
-		</nav>
+		</nav> <!-- navbar ends here -->
 	</div>
 	<div>
 		<input type="text" name="keyword" size="50" /> 

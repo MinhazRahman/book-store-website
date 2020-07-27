@@ -8,40 +8,20 @@ body {
 	font-smoothing: antialiased;
 }
 
-#headermenu {
-	display: table;
+.nav-item{
+	color:#52796f;
 }
 
-.menu_item {
-	display: table-cell;
-	padding-right: 20px;
+.active-icon{
+	color:#52796f;
 }
 
-#headermenu div {
-	display: table-cell;
-	padding-right: 20px;
+.active-text{
+	color:#52796f;
 }
-
-a:link {
-	color: cornflowerBlue;
-	text-decoration: none;
-}
-
-a:visited {
-	color: indigo;
-}
-
-a:hover {
-	color: blue;
-	text-decoration: underline;
-}
-
-a:active {
-	color: red;
-}
-
-#headermenu a:link{
-	font-size: larger;
+.nav-item:hover{
+	color: white;
+	background: #e7ab3c;	
 }
 
 .pageheading{
