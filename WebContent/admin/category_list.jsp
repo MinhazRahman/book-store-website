@@ -30,7 +30,7 @@
 		<table class="list_items">
 			<tr> 
 				<th>Index</th>
-				<th>Id</th>
+				<th>Category Id</th>
 				<th>Category Name</th>
 				<th>Actions</th>
 			</tr>

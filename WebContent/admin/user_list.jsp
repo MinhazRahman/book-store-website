@@ -35,7 +35,7 @@
 		<table class="list_items">
 			<tr> 
 				<th>Index</th>
-				<th>Id</th>
+				<th>User Id</th>
 				<th>Email</th>
 				<th>Full Name</th>
 				<th>Actions</th>
