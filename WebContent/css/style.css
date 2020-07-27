@@ -55,12 +55,16 @@ input{
 	height: 25px;
 }
 
+/* buttons */
 .site-button{
-	color:#ffffff;
-	background:#555555;
-	padding:6px;
-	border:1px solid;
-	border-radius: 5px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 12px 30px;
+	color: #ffffff;
+	background: #e7ab3c;
+	border: 1px solid #e7ab3c;
+	text-transform: uppercase;
 }
 
 button[type=submit]{
@@ -69,7 +73,7 @@ button[type=submit]{
 
 button:hover{
 	background-color: #e7ab3c;
-	color: white;
+	color: #072F54;
 }
 
 
