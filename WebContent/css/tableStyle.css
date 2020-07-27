@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.list_items {
+  font-family: "Muli", sans-serif;
+  border-collapse: collapse;
+}
+
+.list_items td, .list_items th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.list_items tr:nth-child(even){background-color: #f2f2f2;}
+
+.list_items tr:hover {background-color: #ddd;}
+
+.list_items th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e7ab3c;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
