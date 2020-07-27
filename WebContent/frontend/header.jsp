@@ -2,7 +2,24 @@
 
 <div align="center">
 	<div>
-		<img src="images/homepage/bookstore_logo.png">
+		<!-- Image and text -->
+		<nav class="navbar sticky-top navbar-light bg-light">
+  			<a class="navbar-brand" href="#">
+    			<img src="images/homepage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+  				<span class="navbar-text">
+    				My Bookstore
+  				</span>
+  			</a>
+  		
+  			<form class="form-inline">
+    			<div class="input-group mb-3">
+  					<input type="text" class="form-control" placeholder="Search">
+  					<div class="input-group-append">
+    					<button class="btn btn-success" type="submit">Go</button>
+  					</div>
+				</div>
+  			</form>
+		</nav>
 	</div>
 	<div>
 		<input type="text" name="keyword" size="50" /> 
