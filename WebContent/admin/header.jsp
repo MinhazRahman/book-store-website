@@ -23,7 +23,7 @@
 	
 	<nav class="nav nav-tabs justify-content-center">
 		<a href="#admin" class="nav-item nav-link active">
-        	<i class="fa fa-user-plus active-icon"></i><span class="active-text">Admin</span> 
+        	<i class="fa fa-user-plus active-icon"></i><span>Admin</span> 
    	 	</a>
     	<a href="list_users" class="nav-item nav-link">
         	<i class="fa fa-user"></i> Users
@@ -34,16 +34,16 @@
     	<a href="books" class="nav-item nav-link">
         	<i class="fa fa-book"></i> Books
     	</a>
-    	<a href="customers" class="nav-item nav-link" tabindex="-1">
+    	<a href="customers" class="nav-item nav-link">
         	<i class="fa fa-users"></i> Customers
     	</a>
-    	<a href="reviews" class="nav-item nav-link" tabindex="-1">
+    	<a href="reviews" class="nav-item nav-link">
         	<i class="fa fa-star"></i> Reviews
     	</a>
-    	<a href="orders" class="nav-item nav-link" tabindex="-1">
+    	<a href="orders" class="nav-item nav-link">
         	<i class="fa fa-shopping-cart"></i> Orders
     	</a>
-    	<a href="orders" class="nav-item nav-link" tabindex="-1">
+    	<a href="orders" class="nav-item nav-link">
         	<span>Welcome, Admin | Logout</span>
     	</a>
 	</nav>

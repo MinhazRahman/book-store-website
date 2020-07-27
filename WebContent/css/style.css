@@ -12,12 +12,12 @@ body {
 	color:#52796f;
 }
 
-.active-icon{
-	color:#52796f;
+.nav-tabs > a.active > i{
+	color: #52796f;
 }
 
-.active-text{
-	color:#52796f;
+.nav-tabs > a.active > span{
+	color: #52796f;
 }
 .nav-item:hover{
 	color: white;
