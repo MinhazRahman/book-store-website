@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>My Bookstore Administration</title>
+	<meta charset="UTF-8">
+	<title>My Bookstore Administration</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 	
 	<jsp:directive.include file = "header.jsp"/>
 	
 	<div align = "center">
-		<h2>Administration Dashboard</h2>
+		<h2 class="pageheading">Administration Dashboard</h2>
 	</div>
 	
 	<div align = "center">

@@ -4,15 +4,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Manage Users - My Bookstore Administration</title>
+	<meta charset="UTF-8">
+	<title>Manage Users - My Bookstore Administration</title>
+	
+	 <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<!-- Table styles -->
+	<link rel="stylesheet" type="text/css" href="../css/tableStyle.css">
 </head>
 <body>
 	
 	<jsp:directive.include file = "header.jsp"/>
 	
 	<div align = "center">
-		<h2>Users Management</h2>
+		<h2 class="pageheading">Users Management</h2>
 		<h3><a href="user_form.jsp">Create New User</a></h3>
 	</div>
 	
@@ -24,7 +32,7 @@
 
 	
 	<div align = "center">
-		<table border = "1" cellpadding = "5">
+		<table class="list_items">
 			<tr> 
 				<th>Index</th>
 				<th>Id</th>

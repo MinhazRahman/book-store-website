@@ -4,25 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>
+	<meta charset="UTF-8">
+	<title>
 
-	<c:if test="${category != null}">
-		Edit Category
-	</c:if>
+		<c:if test="${category != null}">
+			Edit Category
+		</c:if>
 			
-	<c:if test="${category == null}">
-		Create New Category
-	</c:if>
+		<c:if test="${category == null}">
+			Create New Category
+		</c:if>
 
-</title>
+	</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 
 	<jsp:directive.include file="header.jsp" />
 
 	<div align="center">
-		<h2>
+		<h2 class="pageheading">
 			<c:if test="${category != null}">
 				Edit Category
 			</c:if>
@@ -56,8 +57,8 @@
 
 				<tr>
 					<td colspan = "2" align = "center">
-						<input type="submit" value="Save"> 
-						<input type="button" value="Cancel" onclick="javascript:history.go(-1)">
+						<button class="site-button" type="submit">Save</button> 
+						<button class="site-button" type ="button" onclick="javascript:history.go(-1)">Cancel</button>
 					</td>
 				</tr>
 

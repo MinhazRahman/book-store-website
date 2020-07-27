@@ -4,15 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Manage Categories - My Bookstore Administration</title>
+	<meta charset="UTF-8">
+	<title>Manage Categories - My Bookstore Administration</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/tableStyle.css">
+	
 </head>
 <body>
 	
 	<jsp:directive.include file = "header.jsp"/>
 	
 	<div align = "center">
-		<h2>Category Management</h2>
+		<h2 class="pageheading">Category Management</h2>
 		<h3><a href="category_form.jsp">Create New Category</a></h3>
 	</div>
 	
@@ -24,7 +27,7 @@
 
 	
 	<div align = "center">
-		<table border = "1" cellpadding = "5">
+		<table class="list_items">
 			<tr> 
 				<th>Index</th>
 				<th>Id</th>

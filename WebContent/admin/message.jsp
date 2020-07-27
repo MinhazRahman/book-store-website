@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>My Bookstore Administration</title>
+	<meta charset="UTF-8">
+	<title>My Bookstore Administration</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 	
