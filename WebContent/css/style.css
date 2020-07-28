@@ -8,21 +8,57 @@ body {
 	font-smoothing: antialiased;
 }
 
+#main-header{
+	background: #fff;
+}
+
+.form-inline > div.input-group > input {
+	width: 600px;
+	border-bottom: 2px solid #e7ab3c;
+}
+
+.form-inline > div.input-group > input:focus {
+	border: 1px solid black;
+}
+
+.form-inline > div.input-group > div.input-group-append > button {
+	background: #e7ab3c;
+	border: transparent !important;
+	border-radius: 2px;
+}
+
 .nav-item{
-	color:#52796f;
+	color:#000000; /*#52796f;*/
 }
 
 .nav-tabs > a.active > i{
-	color: #52796f;
+	color: #000000;
 }
 
 .nav-tabs > a.active > span{
-	color: #52796f;
+	color: #000000;
 }
+
+#nav-submenu{
+	border-bottom: 1px solid #e7ab3c;
+}
+
+#nav-submenu > a.active{
+	border-left: 1px solid #e7ab3c;
+	border-top: 1px solid #e7ab3c;
+	border-right: 1px solid #e7ab3c;
+}
+
 .nav-item:hover{
 	color: white;
 	background: #e7ab3c;	
 }
+
+nav-item:active{
+	color: white;
+	background: #e7ab3c;
+}
+
 
 .pageheading{
 	color: black;

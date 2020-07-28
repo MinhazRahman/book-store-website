@@ -1,6 +1,6 @@
 <div align="center">
 	<!-- Image and text -->
-	<nav class="navbar sticky-top navbar-light bg-light">
+	<nav id="main-header" class="navbar sticky-top navbar-light bg-light">
   		<a class="navbar-brand" href="#">
     	<img src="../images/adminpage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
@@ -9,19 +9,20 @@
   		</a>
   		<form class="form-inline">
         	<div class="input-group">                    
-            	<input type="text" class="form-control" placeholder="Search">
+            	<input type="text" class="form-control search-box" placeholder="Search">
               	<div class="input-group-append">
-                	<button type="button" class="btn btn-secondary"><span class="fa fa-search"></span></button>
+                	<button type="button" class="btn btn-primary"><span class="fa fa-search"></span></button>
                 </div>
              </div>
         </form>
         
-        <div class="navbar navbar-nav">
-        	<a href="#" class="nav-item nav-link">Login</a>
-        </div>
+         <span class="navbar-text">
+    		<i class="fa fa-user"></i> Login
+    		<i class="fa fa-user"></i> Login
+  		</span>
 	</nav>
 	
-	<nav class="nav nav-tabs justify-content-center">
+	<nav id="nav-submenu" class="nav nav-tabs justify-content-center">
 		<a href="#admin" class="nav-item nav-link active">
         	<i class="fa fa-user-plus active-icon"></i><span>Admin</span> 
    	 	</a>
