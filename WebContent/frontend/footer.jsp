@@ -1,5 +1,5 @@
-<div align="center">
-	<h4>Copyright (c) 2020, My Bookstore</h4>
+<div class="footer" align="center">
+	<span>Copyright (c) 2020, My Bookstore</span>
 	<a href="about">About Us</a> |
 	<a href="contact">Contact</a> |
 	<a href="policy">Privacy Policy</a>

@@ -14,7 +14,12 @@ body {
     color: #333;
 }
 
-/* main header section */
+.main-content{
+	margin: 0!important;
+	background-color: #f1f2f4;
+}
+
+/*main header*/
 
 #main-header{
 	background: #fff;
@@ -36,7 +41,8 @@ body {
 	color: #ffbc42;
 }
 
-/* search input and search button */
+/*search box and search button*/
+
 .form-inline > div.input-group > input {
 	width: 600px;
 	border-bottom: 2px solid #e7ab3c;
@@ -59,9 +65,20 @@ body {
 }
 
 /* navigation bar */
+#home-nav-submenu{
+	border-bottom: 1px solid #ffbc42;
+}
+
+#home-nav-submenu > a.active{
+	border-left: 1px solid #ffbc42;
+	border-top: 1px solid #ffbc42;
+	border-right: 1px solid #ffbc42;
+}
+
 .nav-item{
 	color:#000000; /*#52796f; f8961e*/
 }
+
 
 .nav-tabs > a.active > i{
 	color: #000000;
@@ -71,14 +88,8 @@ body {
 	color: #000000;
 }
 
-#nav-submenu{
-	border-bottom: 1px solid #ffbc42;
-}
-
-#nav-submenu > a.active{
-	border-left: 1px solid #ffbc42;
-	border-top: 1px solid #ffbc42;
-	border-right: 1px solid #ffbc42;
+.home-nav-item{
+	color: #000000; /* #0077b6*/
 }
 
 .nav-tabs > a.nav-link:hover,
@@ -89,12 +100,12 @@ body {
 	border: 1px solid transparent;
 }
 
-/* page heading */
+/* page headings */
 .pageheading{
 	color: black;
 }
 
-/* input text boxes */
+/* input boxes */
 input{
 	border: 1px solid;
 	border-radius: 3px;
@@ -126,7 +137,11 @@ input{
 	box-shadow: 0 0 0 2px rgba(21, 156, 228, 0.4);
 }
 
+/* footer */
 
+.footer{
+	background-color: #f1f2f4;
+}
 
 
 

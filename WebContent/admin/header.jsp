@@ -1,6 +1,6 @@
 <div align="center">
 	<!-- Image and text -->
-	<nav id="main-header" class="navbar sticky-top navbar-light bg-light">
+	<nav id="main-header" class="navbar sticky-top navbar-light">
   		<a class="navbar-brand" href="#">
     	<img src="../images/adminpage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
@@ -11,14 +11,16 @@
         	<div class="input-group">                    
             	<input type="text" class="form-control search-box" placeholder="Search">
               	<div class="input-group-append">
-                	<button type="button" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                	<button type="button" class="btn"><span class="fa fa-search"></span></button>
                 </div>
              </div>
         </form>
         
          <span class="navbar-text">
-    		<i class="fa fa-user"></i> Login
-    		<i class="fa fa-user"></i> Login
+         	<span>Welcome, Admin</span>
+         	<a href="logout">
+         		<i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+         	</a>
   		</span>
 	</nav>
 	
@@ -43,9 +45,6 @@
     	</a>
     	<a href="orders" class="nav-item nav-link">
         	<i class="fa fa-shopping-cart"></i> Orders
-    	</a>
-    	<a href="orders" class="nav-item nav-link">
-        	<span>Welcome, Admin | Logout</span>
     	</a>
 	</nav>
 

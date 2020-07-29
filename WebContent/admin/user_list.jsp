@@ -69,16 +69,17 @@
 	</div>
 	
 	<jsp:directive.include file = "footer.jsp"/>
-
-</body>
-
+	
 	<script>
 		// on confirmation send the request to the DeleteUserServlet
-		function confirmDelete(userId){
-			if(confirm("Are you sure, you want to delete your user with id " + userId + "?" )){
+		function confirmDelete(userId) {
+			if (confirm("Are you sure, you want to delete your user with id "
+					+ userId + "?")) {
 				window.location = "delete_user?userId=" + userId;
 			}
 		}
-	
 	</script>
+
+</body>
+
 </html>
