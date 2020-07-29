@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+/*Color palette:
+- #ddd
+- #f2f2f2
+- #ced4da
+- black
+*/
+
 .list_items {
   font-family: "Muli", sans-serif;
   border-collapse: collapse;
