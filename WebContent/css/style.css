@@ -81,10 +81,7 @@ body {
 	border-right: 1px solid #ffbc42;
 }
 
-.nav-tabs > a.nav-link:hover,
-.nav-tabs > a.nav-link:active,
-.nav-tabs > a.nav-link:visited,
-.nav-tabs > a.nav-link:focus{
+.nav-tabs > a.nav-link:not(.active):hover{
 	color: #0077b6;
 	border: 1px solid transparent;
 }
