@@ -16,7 +16,8 @@
 	
 
 	<!-- JS, Popper.js, and jQuery -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
@@ -40,11 +41,11 @@
 
 	<div align="center">
 		<c:if test="${user != null}">
-			<form action="update_user" method="post" onsubmit="return validateFormInput()">
+			<form action="update_user" method="post" id="user-form">
 			<input type="hidden" name="userId" value="${user.userId}">
 		</c:if>
 		<c:if test="${user == null}">
-			<form action="create_user" method="post" onsubmit="return validateFormInput()">
+			<form action="create_user" method="post" id="user-form">
 		</c:if>
 			<table>
 				<tr>
@@ -83,31 +84,25 @@
 </body>
 
 	<script type="text/javascript">
-		
-		function validateFormInput(){
-			var txtEmail = document.getElementById("email");
-			var txtFullName = document.getElementById("fullname");
-			var txtPassword = document.getElementById("password");
-			
-			if(txtEmail.value.length == 0){
-				alert("Email is required!");
-				txtEmail.focus();
-				return false;
-			}
-			
-			if(txtFullName.value.length == 0){
-				alert("Name is required!");
-				txtFullName.focus();
-				return false;
-			}
-			
-			if(txtPassword.value.length == 0){
-				alert("Password is required!");
-				txtPassword.focus();
-				return false;
-			}
-			
-			return true;
-		}
+		$(document).ready(function(){
+			$("#user-form").validate({
+				rules:{
+					email : {
+						required : true,
+						email : true
+					},
+					fullname: "required",
+					password: "required"
+				},
+				messages:{
+					email:{
+						required: "Please enter your email.",
+						email: "Please enter valid email address"
+					},
+					fullname: "Please enter your name",
+					password: "Please enter your password"
+				}
+			});
+		});
 	</script>
 </html>
