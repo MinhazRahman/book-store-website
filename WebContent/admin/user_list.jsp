@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
 	<!-- JS, Popper.js, and jQuery -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
@@ -59,7 +60,7 @@
 					<td>${user.fullName}</td>
 					<td>
 						<a href ="edit_user?id=${user.userId}">Edit</a> &nbsp;
-						<a href ="javascript:confirmDelete(${user.userId})">Delete</a> &nbsp;
+						<a href ="javascript:void(0)" class="deleteLink" id="${user.userId}">Delete</a> &nbsp;
 					</td>
 				</tr>
 			
@@ -71,13 +72,19 @@
 	<jsp:directive.include file = "footer.jsp"/>
 	
 	<script>
-		// on confirmation send the request to the DeleteUserServlet
-		function confirmDelete(userId) {
-			if (confirm("Are you sure, you want to delete your user with id "
-					+ userId + "?")) {
-				window.location = "delete_user?userId=" + userId;
-			}
-		}
+	// on confirmation send the request to the DeleteUserServlet
+		$(document).ready(function(){
+			$(".deleteLink").each(function(){
+				$(this).on("click", function(){
+					userId = $(this).attr("id");
+					if (confirm("Are you sure, you want to delete your user with id "
+							+ userId + "?")) {
+						window.location = "delete_user?userId=" + userId;
+					}
+				});
+			});
+		});
+		
 	</script>
 
 </body>
