@@ -69,7 +69,7 @@
 				<tr>
 					<td colspan = "2" align = "center">
 						<button class="site-button" type="submit">Save</button> 
-						<button class="site-button" type ="button" onclick="javascript:history.go(-1)">Cancel</button>
+						<button class="site-button" type ="button" id="buttonCancel">Cancel</button>
 					</td>
 				</tr>
 
@@ -95,6 +95,11 @@
 				name : "Please enter category name."
 			}
 		});
+	});
+	
+	// go back to the pervious page when clicking on Cancel button
+	$("#buttonCancel").click(function(){
+		history.go(-1);
 	});
 </script>
 </html>
