@@ -16,7 +16,8 @@
 	
 
 	<!-- JS, Popper.js, and jQuery -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	
@@ -52,7 +53,7 @@
 					<td>${category.name}</td>
 					<td>
 						<a href ="edit_category?id=${category.categoryId}">Edit</a> &nbsp;
-						<a href ="javascript:confirmDelete(${category.categoryId})">Delete</a> &nbsp;
+						<a href ="javascript:void(0)" class="deleteLink" id="${category.categoryId}">Delete</a> &nbsp;
 					</td>
 				</tr>
 			
@@ -67,11 +68,16 @@
 
 	<script>
 		// on confirmation send the request to the DeleteCategoryServlet class
-		function confirmDelete(categoryId){
-			if(confirm("Are you sure, you want to delete your category with id " + categoryId + "?" )){
-				window.location = "delete_category?categoryId=" + categoryId;
-			}
-		}
+		$(document).ready(function(){
+			$(".deleteLink").each(function(){
+				$(this).on("click", function(){
+					categoryId = $(this).attr("id");
+					if(confirm("Are you sure, you want to delete category with id " + categoryId + "?" )){
+						window.location = "delete_category?categoryId=" + categoryId;
+					}
+				});
+			});
+		});
 	
 	</script>
 </html>
