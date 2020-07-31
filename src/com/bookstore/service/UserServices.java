@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Users;
@@ -113,6 +114,37 @@ public class UserServices extends BaseServices{
 		//call the listUser() method to refresh the page
 		String message = "User has been deleted successfully!";
 		listUser(message);
+	}
+	
+	public void login() throws ServletException, IOException {
+		String message = null;
+		// get parameters from the request object
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		// check if the user with the given email and password 
+		// is present or not
+		boolean userFound = userDAO.checkLogin(email, password);
+		
+		if(userFound) {
+			// store user email in an HttpSession object
+			HttpSession session = request.getSession();
+			session.setAttribute("userEmail", email);
+			
+			// forward request and response to AdminHomeServlet
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
+			requestDispatcher.forward(request, response);
+		}else {
+			message = "Invalid login! Please try again.";
+			
+			// add message attribute to the request
+			request.setAttribute("message", message);
+			
+			// forward request and response to login.jsp page
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+			requestDispatcher.forward(request, response);
+		}
+		
 	}
 
 }
