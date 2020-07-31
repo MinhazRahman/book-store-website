@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div align="center">
 	<!-- Image and text -->
 	<nav id="main-header" class="navbar sticky-top navbar-light">
@@ -17,7 +18,7 @@
         </form>
         
          <span class="navbar-text">
-         	<span>Welcome, Admin</span>
+         	<span>Welcome, <c:out value="${sessionScope.userEmail}" /></span>
          	<a href="logout">
          		<i class="fa fa-sign-out" aria-hidden="true"></i> Logout
          	</a>
