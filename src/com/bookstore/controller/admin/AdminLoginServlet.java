@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin.users;
+package com.bookstore.controller.admin;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
