@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +28,16 @@
 </head>
 <body>
 
-	<jsp:directive.include  file = "header.jsp"/>
-
 	<div align="center">
 		<h1>Book Store Administration</h1>
-		<h2>Please login</h2>
+		<h2>Admin Login</h2>
+		<c:if test="${message != null}">
+			<div align="center">
+				<h4>
+					<i>${message}</i>
+				</h4>
+			</div>
+		</c:if>
 		<form id="formLogin" action="login" method="post">
 			<table>
 				<tr>
@@ -50,8 +56,6 @@
 		
 		</form>
 	</div>
-
-	<jsp:directive.include  file = "footer.jsp"/>
 	
 	<script type="text/javascript">
 
