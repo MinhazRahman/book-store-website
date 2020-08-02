@@ -7,16 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bookstore.entity.Category;
 
+/* JUnit 4 test case */
 public class CategoryDAOTest extends BaseDAOTest {
 
 	private static CategoryDAO categoryDAO;
@@ -24,7 +21,7 @@ public class CategoryDAOTest extends BaseDAOTest {
 	@BeforeClass
 	public static void setUp() {
 		BaseDAOTest.setUp();
-		// create a user into the database
+		
 		categoryDAO = new CategoryDAO(entityManager);
 	}
 

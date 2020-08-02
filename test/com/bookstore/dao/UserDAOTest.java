@@ -8,10 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
 import org.junit.AfterClass;
@@ -20,6 +17,7 @@ import org.junit.Test;
 
 import com.bookstore.entity.Users;
 
+/* JUnit 4 test case */
 public class UserDAOTest extends BaseDAOTest{
 	
 	private static UserDAO userDAO;
@@ -27,7 +25,7 @@ public class UserDAOTest extends BaseDAOTest{
 	@BeforeClass
 	public static void setUp() {
 		BaseDAOTest.setUp();
-		// create a user into the database
+
 		userDAO = new UserDAO(entityManager);
 	}
 
@@ -40,7 +38,7 @@ public class UserDAOTest extends BaseDAOTest{
 		user.setEmail("test3@example.com");
 		user.setFullName("Miranda Wander");
 		user.setPassword("mirandapass");
-
+		
 		returnedUser = userDAO.create(user);
 
 		assertTrue(returnedUser.getUserId() > 0);
