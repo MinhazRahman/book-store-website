@@ -2,6 +2,7 @@ package com.bookstore.dao;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -97,6 +98,20 @@ class BookDAOTest extends BaseDAOTest{
 		
 		assertEquals(updatedBook.getTitle(), "Effective Java (3rd Edition)");
 		
+	}
+	
+	@Test
+	public void testGetBookFound() {
+		// create an instance of Book
+		Integer bookId = 34;
+		
+		Book book = bookDAO.get(bookId);
+		
+		String expectedTitle = "Java 8 in Action";
+		String actualTitle = book.getTitle();
+		
+		assertNotNull(book);
+		assertEquals(actualTitle, expectedTitle);
 	}
 	
 	@AfterAll
