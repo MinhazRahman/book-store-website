@@ -26,7 +26,9 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "book", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
 public class Book implements java.io.Serializable {
 
-	private int bookId;
+	private static final long serialVersionUID = 1L;
+	
+	private Integer bookId;
 	private Category category;
 	private String title;
 	private String author;
@@ -76,11 +78,11 @@ public class Book implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "book_id", unique = true, nullable = false)
-	public int getBookId() {
+	public Integer getBookId() {
 		return this.bookId;
 	}
 
-	public void setBookId(int bookId) {
+	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
 
