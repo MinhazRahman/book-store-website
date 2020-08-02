@@ -163,6 +163,13 @@ class BookDAOTest extends BaseDAOTest{
 		assertNull(book);
 	}
 	
+	@Test
+	public void testCountBook() {
+		long numberOfBooks = bookDAO.count();
+		
+		assertEquals(numberOfBooks, 2);
+	}
+	
 	@AfterAll
 	public static void tearDown() {
 		BaseDAOTest.setUp();
