@@ -2,6 +2,7 @@ package com.bookstore.dao;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,6 +14,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -134,6 +136,16 @@ class BookDAOTest extends BaseDAOTest{
 		Book book = bookDAO.get(bookId);
 		
 		assertNull(book);
+	}
+	
+	@Test 
+	public void testListAllBook() {
+		List<Book> listBook = bookDAO.listAll();
+		
+		listBook.forEach(b -> System.out.println(b.getTitle() + " --> " + b.getAuthor()));
+		
+		assertFalse(listBook.isEmpty());
+		assertTrue(listBook.size() > 0);
 	}
 	
 	@AfterAll
