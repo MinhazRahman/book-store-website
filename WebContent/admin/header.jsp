@@ -19,8 +19,8 @@
         
          <span class="navbar-text">
          	<span>Welcome, <c:out value="${sessionScope.userEmail}" /></span>
-         	<a href="logout">
-         		<i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+         	<a href="logout" class="logout-link">
+         		<i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span>
          	</a>
   		</span>
 	</nav>

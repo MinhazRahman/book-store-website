@@ -48,6 +48,9 @@ body {
 	color: #ffbc42;
 }
 
+.logout-link > span:hover {
+	color: #0077b6;
+}
 /* search input and search button */
 .form-inline > div.input-group > input {
 	width: 650px;
