@@ -1,5 +1,6 @@
 package com.bookstore.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,9 +13,9 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book>{
 		super(entityManager);
 	}
 	
-	@Override
 	public Book create(Book book) {
-		return null;
+		book.setLastUpdateTime(new Date());
+		return super.create(book);
 	}
 	
 	@Override
