@@ -148,6 +148,14 @@ class BookDAOTest extends BaseDAOTest{
 		assertTrue(listBook.size() > 0);
 	}
 	
+	@Test
+	public void testFindByTitleBookFound() {
+		Book book = bookDAO.findByTitle("Python in Action");
+		
+		assertNotNull(book);
+		assertEquals(book.getTitle(), "Python in Action");
+	}
+	
 	@AfterAll
 	public static void tearDown() {
 		BaseDAOTest.setUp();
