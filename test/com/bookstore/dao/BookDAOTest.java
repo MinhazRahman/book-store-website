@@ -44,8 +44,8 @@ class BookDAOTest extends BaseDAOTest{
 		
 		// set attributes
 		newBook.setCategory(newCategory);
-		newBook.setTitle("Java 8 in Action"); // title has to be unique
-		newBook.setAuthor("Raoul-Gabriel Urma");
+		newBook.setTitle("Python in Action"); // title has to be unique
+		newBook.setAuthor("Jhon Doe");
 		newBook.setDescription("How to use Java 8's powerful new features");
 		newBook.setPrice(36.72f);
 		newBook.setIsbn("1617291994");
@@ -119,6 +119,17 @@ class BookDAOTest extends BaseDAOTest{
 	public void testGetBookNotFound() {
 		// create an instance of Book
 		Integer bookId = 100;
+		
+		Book book = bookDAO.get(bookId);
+		
+		assertNull(book);
+	}
+	
+	@Test
+	public void testDeleteBook() {
+		Integer bookId = 32;
+		
+		bookDAO.delete(bookId);
 		
 		Book book = bookDAO.get(bookId);
 		
