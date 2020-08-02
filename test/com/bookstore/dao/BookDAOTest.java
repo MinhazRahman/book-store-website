@@ -1,6 +1,7 @@
 package com.bookstore.dao;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -57,18 +58,45 @@ class BookDAOTest extends BaseDAOTest{
 		byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
 		newBook.setImage(imageBytes);
 		
-		if(bookDAO == null) {
-			System.out.println("bookDAO was not created");
-		}
-		
 		// create books
 		Book createdBook = bookDAO.create(newBook);
 		
-		if(createdBook == null) {
-			System.out.println("Book was not created");
-		}
-		
 		assertTrue(createdBook.getBookId() > 0);
+	}
+	
+	@Test
+	public void testUpdateBook() throws ParseException, IOException {
+		// create a Book object
+		Book bookToBeUpdated = new Book();
+		bookToBeUpdated.setBookId(32);
+		
+		// for a book we need to have a category
+		// create a category by category_id and name
+		Category newCategory = new Category(32, "Programming");
+		
+		// set attributes
+		bookToBeUpdated.setCategory(newCategory);
+		bookToBeUpdated.setTitle("Effective Java (3rd Edition)"); // title has to be unique
+		bookToBeUpdated.setAuthor("Joshua Bloch");
+		bookToBeUpdated.setDescription("How to use Java effectively");
+		bookToBeUpdated.setPrice(36.72f);
+		bookToBeUpdated.setIsbn("1617291995");
+		
+		// set publish date
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate = dateFormat.parse("09/28/2014");
+		bookToBeUpdated.setPublishDate(publishDate);
+		
+		// convert the image into byte array and set as the property of the book object
+		String imagePath = "/Users/mohammed/Workspace/BookStoreProject/BookStoreWebsite/WebContent/images/books/EffectiveJava.jpg";
+		byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
+		bookToBeUpdated.setImage(imageBytes);
+		
+		// create books
+		Book updatedBook = bookDAO.update(bookToBeUpdated);
+		
+		assertEquals(updatedBook.getTitle(), "Effective Java (3rd Edition)");
+		
 	}
 	
 	@AfterAll
