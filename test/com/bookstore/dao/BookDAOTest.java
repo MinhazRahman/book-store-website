@@ -156,6 +156,13 @@ class BookDAOTest extends BaseDAOTest{
 		assertEquals(book.getTitle(), "Python in Action");
 	}
 	
+	@Test
+	public void testFindByTitleBookNotFound() {
+		Book book = bookDAO.findByTitle("Java Complete Reference");
+		
+		assertNull(book);
+	}
+	
 	@AfterAll
 	public static void tearDown() {
 		BaseDAOTest.setUp();
