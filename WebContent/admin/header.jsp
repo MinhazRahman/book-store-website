@@ -26,8 +26,8 @@
 	</nav>
 	
 	<nav id="nav-submenu" class="nav nav-tabs justify-content-center">
-		<a href="#admin" class="nav-item nav-link active">
-        	<i class="fa fa-user-plus active-icon"></i><span>Admin</span> 
+		<a href="dashboard" class="nav-item nav-link active">
+			<span>Dashboard</span> 
    	 	</a>
     	<a href="list_users" class="nav-item nav-link">
         	<i class="fa fa-user"></i> Users
