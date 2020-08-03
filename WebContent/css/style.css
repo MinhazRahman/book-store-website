@@ -96,6 +96,10 @@ body {
 	border-right: 1px solid #ffbc42;
 }
 
+#nav-submenu > a.active > span:hover{
+	color: #0077b6;
+}
+
 .nav-tabs > a.nav-link:not(.active):hover{
 	color: #0077b6;
 	border: 1px solid transparent;
