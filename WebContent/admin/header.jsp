@@ -35,7 +35,7 @@
     	<a href="list_category" class="nav-item nav-link">
         	<i class="fa fa-braille"></i> Categories
     	</a>
-    	<a href="books" class="nav-item nav-link">
+    	<a href="list_books" class="nav-item nav-link">
         	<i class="fa fa-book"></i> Books
     	</a>
     	<a href="customers" class="nav-item nav-link">
