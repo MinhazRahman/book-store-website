@@ -141,20 +141,24 @@
 			/* form validation */
 			$("#book-form").validate({
 				rules : {
-					email : {
-						required : true,
-						email : true
-					},
-					fullname : "required",
-					password : "required"
+					category : "required",
+					title : "required",
+					author : "required",
+					isbn : "required",
+					publishDate : "required",
+					bookImage : "required",
+					price : "required",
+					description: "required"
 				},
 				messages : {
-					email : {
-						required : "Please enter your email.",
-						email : "Please enter valid email address"
-					},
-					fullname : "Please enter your name",
-					password : "Please enter your password"
+					category : "Please select a category",
+					title: "Please enter the title of the book",
+					author : "Please enter the name of the author",
+					isbn : "Please enter the ISBN of the book",
+					publishDate: "Please enter the publish date",
+					bookImage : "Please choose an image of the book",
+					price : "Please enter the price",
+					description: "Please enter the description of the book"
 				}
 			});
 			
