@@ -49,7 +49,7 @@
 			<input type="hidden" name="userId" value="${user.userId}">
 		</c:if>
 		<c:if test="${user == null}">
-			<form action="create_book" method="post" id="book-form">
+			<form action="create_book" method="post" id="book-form" enctype="multipart/form-data">
 		</c:if>
 			<table>
 				<tr>
