@@ -1,6 +1,11 @@
 package com.bookstore.service;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
@@ -59,6 +65,78 @@ public class BookServices extends BaseServices{
 		String bookFormPage = "book_form.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(bookFormPage);
 		requestDispatcher.forward(request, response);
+	}
+
+	public void createBook() throws ServletException, IOException{
+		// create a new book instance
+		Book newBook = new Book();
+		
+		// retrieve all the data from the request
+		Integer categoryId = Integer.parseInt(request.getParameter("category"));
+		String title = request.getParameter("title");
+		
+		// if there is another book with the same title in the database
+		// don't create the new book
+		Book book = bookDAO.findByTitle(title);
+		if(book != null) {
+			String message = "Could not create a book. Title " + "`"  + title +"`" + " already exists!";
+			listBooks(message);
+			return;
+		}
+		
+		String author = request.getParameter("author");
+		String isbn = request.getParameter("isbn");
+		Float price = Float.parseFloat(request.getParameter("price"));
+		String description = request.getParameter("description");
+		
+		// retrieve publish date as string and convert it to Date
+		String publishDateString = request.getParameter("publishDate");
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate = null;
+		try {
+			publishDate = dateFormat.parse(publishDateString);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+			throw new ServletException("Error parsing publish date, format: MM/dd/yyyy");
+		}
+		
+		// set the properties of the book
+		
+		// retrieve the category from database by category id
+		Category category = categoryDAO.get(categoryId);
+		newBook.setCategory(category);
+		
+		newBook.setTitle(title);
+		newBook.setAuthor(author);
+		newBook.setIsbn(isbn);
+		newBook.setPrice(price);
+		newBook.setDescription(description);
+		newBook.setPublishDate(publishDate);
+		
+		// retrieve image data from multipart request and convert it to an array of bytes
+		Part part = request.getPart("bookImage");
+		byte[] imageBytes = null;
+		
+		// read image data as an array of bytes
+		if(part != null && part.getSize() > 0) {
+			long size = part.getSize();
+			imageBytes = new byte[(int) size];
+			
+			InputStream inputStream = part.getInputStream();
+			inputStream.read(imageBytes);
+			inputStream.close();
+			
+			newBook.setImage(imageBytes);
+		}
+		
+		// create the book
+		Book createdBook = bookDAO.create(newBook);
+	
+		if(createdBook.getBookId() > 0) {
+			String message = "A new book has been created succefully.";
+			listBooks(message);
+		}
 	}
 
 }
