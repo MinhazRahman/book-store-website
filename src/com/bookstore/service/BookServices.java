@@ -139,4 +139,27 @@ public class BookServices extends BaseServices{
 		}
 	}
 
+	public void editBook() throws ServletException, IOException {
+		// retrieve data from the request
+		int bookId = Integer.parseInt(request.getParameter("id"));
+		
+		// find a book by id
+		Book book = bookDAO.get(bookId);
+		
+		// retrieve a list of categories from the database
+		List<Category> listCategory = categoryDAO.listAll();
+		
+		// set list of category as attribute
+		request.setAttribute("listCategory", listCategory);
+		
+		// set the book object as the attribute of the request
+		request.setAttribute("book", book);
+		
+		// forward the request and response to book_form.jsp file
+		String bookFormPage = "book_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(bookFormPage);
+		requestDispatcher.forward(request, response);
+		
+	}
+
 }
