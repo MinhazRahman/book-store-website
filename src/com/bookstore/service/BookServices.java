@@ -161,5 +161,79 @@ public class BookServices extends BaseServices{
 		requestDispatcher.forward(request, response);
 		
 	}
+	
+	public void updateBook() throws ServletException, IOException {
+		String message = null;
+		
+		// retrieve data from the request object
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
+		// find the book in the database by id
+		Book bookToBeUpdated = bookDAO.get(bookId);
+		
+		Integer categoryId = Integer.parseInt(request.getParameter("category"));
+		Category category = categoryDAO.get(categoryId);
+		
+		String title = request.getParameter("title");
+		// check if there is anotherBook other than the bookToBeUpdated 
+		// with the same title already exists in the database, then don't update the book
+		Book anotherBook = bookDAO.findByTitle(title);
+		if(anotherBook != null && bookToBeUpdated.getBookId() != anotherBook.getBookId()) {
+			message = "Could not update the book! There is another book with the title " + "`" + 
+							title + "`" + " already exists!";
+			listBooks(message);
+			return;
+		}
+		
+		String author = request.getParameter("author");
+		String isbn = request.getParameter("isbn");
+		Float price = Float.parseFloat(request.getParameter("price"));
+		String description = request.getParameter("description");
+		
+		// retrieve publish date as a string and convert it to Date
+		String publishDateString = request.getParameter("publishDate");
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate = null;
+		try {
+			publishDate = dateFormat.parse(publishDateString);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+			throw new ServletException("Error parsing publish date, format: MM/dd/yyyy");
+		}
+		
+		// set the properties of the book
+
+		bookToBeUpdated.setCategory(category);
+
+		bookToBeUpdated.setTitle(title);
+		bookToBeUpdated.setAuthor(author);
+		bookToBeUpdated.setIsbn(isbn);
+		bookToBeUpdated.setPrice(price);
+		bookToBeUpdated.setDescription(description);
+		bookToBeUpdated.setPublishDate(publishDate);
+
+		// retrieve image data from multipart request and convert it to an array of bytes
+		Part part = request.getPart("bookImage");
+		byte[] imageBytes = null;
+
+		// read image data as an array of bytes
+		if (part != null && part.getSize() > 0) {
+			long size = part.getSize();
+			imageBytes = new byte[(int) size];
+
+			InputStream inputStream = part.getInputStream();
+			inputStream.read(imageBytes);
+			inputStream.close();
+
+			bookToBeUpdated.setImage(imageBytes);
+		}
+		
+		// update the book
+		Book updatedBook = bookDAO.update(bookToBeUpdated);
+		if(updatedBook.getBookId() > 0) {
+			message = "Book has been updated successfully!";
+			listBooks(message);
+		}
+	}
 
 }
