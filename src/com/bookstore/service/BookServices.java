@@ -246,4 +246,33 @@ public class BookServices extends BaseServices{
 		}
 	}
 
+	public void deleteBook() throws ServletException, IOException {
+		Integer bookId = 0;
+		Book bookToBeDeleted = null;
+		String message = null;
+		String destinationPage = null;
+		
+		// retrieve the id of the book to be deleted from the request
+		bookId = Integer.parseInt(request.getParameter("bookId"));
+		
+		// retrieve the book from the database by id
+		bookToBeDeleted = bookDAO.get(bookId);
+		
+		// if the book is present in the database then delete the book
+		// otherwise show custom error message
+		if(bookToBeDeleted != null && bookToBeDeleted.getBookId() == bookId) {
+			bookDAO.delete(bookId);
+			message = "Book with id " + bookId + " has been deleted successfully!";
+			listBooks(message);
+		}else {
+			message = "Couldn't delete the book with id " + bookId;
+			request.setAttribute("message", message);
+			
+			destinationPage = "message.jsp";
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(destinationPage);
+			requestDispatcher.forward(request, response);
+		}
+		
+	}
+
 }
