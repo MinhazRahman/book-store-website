@@ -140,24 +140,34 @@ public class BookServices extends BaseServices{
 	}
 
 	public void editBook() throws ServletException, IOException {
+		
+		List<Category> listCategory = null;
+		String message = null;
+		String destinationPage = "book_form.jsp";
+		
 		// retrieve data from the request
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		
 		// find a book by id
 		Book book = bookDAO.get(bookId);
 		
-		// retrieve a list of categories from the database
-		List<Category> listCategory = categoryDAO.listAll();
+		if(book != null) {
+			// retrieve a list of categories from the database
+			listCategory = categoryDAO.listAll();
+			
+			// set list of category as attribute
+			request.setAttribute("listCategory", listCategory);
+			
+			// set the book object as the attribute of the request
+			request.setAttribute("book", book);
+		}else {
+			destinationPage = "message.jsp";
+			message = "Could not find book with ID " + bookId;
+			request.setAttribute("message", message);
+		}
 		
-		// set list of category as attribute
-		request.setAttribute("listCategory", listCategory);
-		
-		// set the book object as the attribute of the request
-		request.setAttribute("book", book);
-		
-		// forward the request and response to book_form.jsp file
-		String bookFormPage = "book_form.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(bookFormPage);
+		// forward the request and response to destination file
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destinationPage);
 		requestDispatcher.forward(request, response);
 		
 	}
