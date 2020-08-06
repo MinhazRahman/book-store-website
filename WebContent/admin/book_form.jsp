@@ -45,8 +45,8 @@
 
 	<div align="center">
 		<c:if test="${book != null}">
-			<form action="update_book" method="post" id="book-form">
-			<input type="hidden" name="userId" value="${user.userId}">
+			<form action="update_book" method="post" id="book-form" enctype="multipart/form-data">
+			<input type="hidden" name="bookId" value="${book.bookId}">
 		</c:if>
 		<c:if test="${user == null}">
 			<form action="create_book" method="post" id="book-form" enctype="multipart/form-data">
@@ -57,7 +57,14 @@
 					<td align = "left">
 						<select name = "category">
 							<c:forEach items="${listCategory}" var = "category">
-								<option value = "${category.categoryId}">${category.name}</option>
+								<c:if test="${category.categoryId eq book.category.categoryId }">
+									<option value="${category.categoryId}" selected>
+								</c:if>
+								<c:if test="${category.categoryId ne book.category.categoryId}">
+									<option value = "${category.categoryId}">
+								</c:if>
+										${category.name}
+									</option>
 							</c:forEach>
 						</select>
 					</td>
@@ -86,7 +93,8 @@
 					<td align = "right">Book Image:</td>
 					<td align = "left">
 						<input type="file" id = "bookImage" name="bookImage" size="20"><br />
-						<img id= "thumbnail" alt = "Image Preview"  style = "width:20%; margin-top: 10px;"/>	
+						<img id= "thumbnail" alt = "Image Preview"  style = "width:20%; margin-top: 10px;"
+							src="data:image/jpg;base64,${book.base64Image}" width="100" height="100"/>	
 					</td>
 				</tr>
 								<tr>
@@ -97,7 +105,7 @@
 				<tr>
 					<td align = "right">Description:</td>
 					<td align = "left">
-						<textarea rows = "5" cols = "50" id = "description" name="description"></textarea>
+						<textarea rows = "5" cols = "50" id = "description" name="description">${book.description}</textarea>
 					</td>
 				</tr>
 				
@@ -146,7 +154,12 @@
 					author : "required",
 					isbn : "required",
 					publishDate : "required",
-					bookImage : "required",
+					
+					// if book is null only then bookImage is required
+					<c:if test="${book == null}">
+						bookImage : "required",
+					</c:if>
+
 					price : "required",
 					description: "required"
 				},
