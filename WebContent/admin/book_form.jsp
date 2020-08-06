@@ -46,9 +46,9 @@
 	<div align="center">
 		<c:if test="${book != null}">
 			<form action="update_book" method="post" id="book-form" enctype="multipart/form-data">
-			<input type="hidden" name="bookId" value="${book.bookId}">
+			<input type="hidden" id = "bookId" name="bookId" value="${book.bookId}">
 		</c:if>
-		<c:if test="${user == null}">
+		<c:if test="${book == null}">
 			<form action="create_book" method="post" id="book-form" enctype="multipart/form-data">
 		</c:if>
 			<table>
@@ -133,6 +133,7 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function() {
+			
 			/* datepicker */
 			$("#publishDate").datepicker({
 				showOn : "button",
@@ -156,10 +157,13 @@
 					publishDate : "required",
 					
 					// if book is null only then bookImage is required
-					<c:if test="${book == null}">
-						bookImage : "required",
-					</c:if>
 
+					bookImage : {
+						required: function(){
+							return "${book.bookId}" === "";
+						}
+					},
+					
 					price : "required",
 					description: "required"
 				},
