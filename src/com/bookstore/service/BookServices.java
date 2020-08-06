@@ -141,7 +141,7 @@ public class BookServices extends BaseServices{
 
 	public void editBook() throws ServletException, IOException {
 		// retrieve data from the request
-		int bookId = Integer.parseInt(request.getParameter("id"));
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		
 		// find a book by id
 		Book book = bookDAO.get(bookId);
