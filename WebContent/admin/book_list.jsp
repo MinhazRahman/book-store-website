@@ -89,9 +89,9 @@
 			$(".deleteLink").each(function(){
 				$(this).on("click", function(){
 					bookId = $(this).attr("id");
-					if (confirm("Are you sure, you want to delete your user with id "
+					if (confirm("Are you sure, you want to delete Book with id "
 							+ bookId + "?")) {
-						window.location = "delete_user?userId=" + bookId;
+						window.location = "delete_book?bookId=" + bookId;
 					}
 				});
 			});
