@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div align="center">
 	<!-- Image and text -->
-	<nav id="main-header" class="navbar sticky-top navbar-light">
+	<nav id="main-header" class="navbar navbar-light">
   		<a class="navbar-brand" href="#">
     	<img src="../images/adminpage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
@@ -26,7 +26,7 @@
 	</nav>
 	
 	<nav id="nav-submenu" class="nav nav-tabs justify-content-center">
-		<a href="dashboard" class="nav-item nav-link active">
+		<a href="." class="nav-item nav-link active"> <!-- href="." will invoke the AdminHomeServlet -->
 			<span>Dashboard</span> 
    	 	</a>
     	<a href="list_users" class="nav-item nav-link">

@@ -3,7 +3,7 @@
 <div align="center">
 	<div>
 			<!-- Image and text -->
-	<nav id="main-header" class="navbar sticky-top navbar-light">
+	<nav id="main-header" class="navbar navbar-light">
   		<a class="navbar-brand" href="#">
     	<img src="images/homepage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
@@ -35,7 +35,7 @@
 	
 	<div>
 		<nav id="home-nav-submenu" class="nav nav-tabs justify-content-center">
-			<a href="#home" class="nav-item nav-link active"> 
+			<a href="." class="nav-item nav-link active">  <!-- href="." will invoke the HomeServlet -->
 				<i class="fa fa-home" aria-hidden="true"></i><span>Home</span>
 			</a>
 			<c:forEach var="category" items="${listCategory}" varStatus="status">
