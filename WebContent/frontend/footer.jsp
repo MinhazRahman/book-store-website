@@ -1,4 +1,4 @@
-<div class="footer" align="center">
+<div class="footer" align="center" style="clear: both;">
 	<span>Copyright (c) 2020, My Bookstore</span>
 	<a href="about">About Us</a> |
 	<a href="contact">Contact</a> |
