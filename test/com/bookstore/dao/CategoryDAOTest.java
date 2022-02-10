@@ -1,15 +1,15 @@
 package com.bookstore.dao;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import com.bookstore.entity.Category;
 
@@ -18,7 +18,7 @@ public class CategoryDAOTest extends BaseDAOTest {
 
 	private static CategoryDAO categoryDAO;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setUp() {
 		BaseDAOTest.setUp();
 		
@@ -114,7 +114,7 @@ public class CategoryDAOTest extends BaseDAOTest {
 		assertNull(category);
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDown() {
 		BaseDAOTest.setUp();
 	}

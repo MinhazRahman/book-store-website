@@ -1,19 +1,23 @@
 package com.bookstore.dao;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceException;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.bookstore.entity.Users;
 
@@ -22,7 +26,7 @@ public class UserDAOTest extends BaseDAOTest{
 	
 	private static UserDAO userDAO;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setUp() {
 		BaseDAOTest.setUp();
 
@@ -43,14 +47,21 @@ public class UserDAOTest extends BaseDAOTest{
 
 		assertTrue(returnedUser.getUserId() > 0);
 	}
+	
 
-	@Test(expected = PersistenceException.class)
+	@Test
 	public void testCreateUsersFieldsNotSet() {
-		// create Users instance
-		Users user = new Users();
 		
-		userDAO.create(user);
+		Assertions.assertThrows(PersistenceException.class, () -> {
+			// create Users instance
+			Users user = new Users();
+			
+			userDAO.create(user);
+			
+		});
 	}
+	
+	
 	
 	@Test
 	public void testUpdateUsers() {
@@ -103,10 +114,13 @@ public class UserDAOTest extends BaseDAOTest{
 		assertNull(user);
 	}
 	
-	@Test(expected = EntityNotFoundException.class)
+	@Test
 	public void testDeleteUsersNotPresent() {
-		Integer userId = 99;
-		userDAO.delete(userId);
+		
+		Assertions.assertThrows(EntityNotFoundException.class, ()->{
+			Integer userId = 99;
+			userDAO.delete(userId);
+		});
 	}
 	
 	@Test
@@ -151,7 +165,7 @@ public class UserDAOTest extends BaseDAOTest{
 		assertFalse(found);	
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDown() {
 		BaseDAOTest.tearDown();
 	}
