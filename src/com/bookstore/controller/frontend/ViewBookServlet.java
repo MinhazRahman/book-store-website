@@ -14,7 +14,7 @@ public class ViewBookServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     public ViewBookServlet() {
-        
+        super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
