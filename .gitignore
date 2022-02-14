@@ -163,3 +163,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Configuration files
+persistence.xml
+hibernate.cfg.xml
+
