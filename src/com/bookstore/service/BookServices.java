@@ -299,4 +299,26 @@ public class BookServices extends BaseServices{
 		requestDispatcher.forward(request, response);
 	}
 
+	
+	public void viewBookDetail() throws ServletException, IOException {
+		
+		String bookDetailPage = "frontend/book_detail.jsp";
+		
+		// retrieve data from the request
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
+		
+		// find a book by id
+		Book book = bookDAO.get(bookId);
+		// retrieve the list of category
+		List<Category> listCategory = categoryDAO.listAll();
+		
+		// set the book and the listCategory objects as the attributes of the request
+		request.setAttribute("listCategory", listCategory);
+		request.setAttribute("book", book);
+		
+		// forward the request and response to destination file
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(bookDetailPage);
+		requestDispatcher.forward(request, response);
+	}
+
 }
