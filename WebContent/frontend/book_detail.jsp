@@ -8,8 +8,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>${book.title} - Buy books online</title>
+	
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="css/home-style.css">
+	<link rel="stylesheet" type="text/css" href="css/book-detail-style.css">
 	
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -26,9 +28,34 @@
 
 	<jsp:directive.include  file = "header.jsp"/>
 
-	<div class="main-content">
-
-		<h2>${book.title}</h2>
+	<div class="main-content-book-detail">
+		<div class="container">
+		
+			<div class="left-book-detail">
+				<h2>${book.title}</h2> by ${book.author} <br> <br>
+				<img src="data:image/jpg;base64,${book.base64Image}" width="240" height="300" />
+			</div>
+			
+			<div class="center-book-detail">
+				<h3> Rating *** </h3> <br>
+				${book.description}
+			</div>
+			
+			<div class="right-book-detail">
+				$${book.price} <br>
+				<button type="submit" class="site-button">Add to Cart</button>
+			</div>
+			
+			<div class="clear-book-detail"></div>
+			
+			<div class="bottom-book-detail">
+				<h2>Customer reviews</h2>
+				<button type="submit" class="site-button">Write a Review</button>
+			
+			</div>
+		
+		</div>
+		
 	</div>
 	
 	
