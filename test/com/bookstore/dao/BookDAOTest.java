@@ -190,6 +190,15 @@ class BookDAOTest extends BaseDAOTest{
 		assertTrue(numberOfNewBooks <= 4);
 	}
 	
+	@Test
+	public void testSearch() {
+		String keyword = "Java";
+		
+		List<Book> result = bookDAO.search(keyword);
+		
+		assertEquals(3, result.size());
+	}
+	
 	
 	
 	@AfterAll
