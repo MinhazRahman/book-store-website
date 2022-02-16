@@ -31,7 +31,7 @@
 		<c:forEach var="book" items="${listBooks}">
 			<div style="display: inline-block; margin: 10px;">
 				<div>
-					<a href="view_book?id${book.bookId}">
+					<a href="view_book?id=${book.bookId}">
 						<img src="data:image/jpg;base64,${book.base64Image}" width="80" height="100"/>
 					</a>
 				</div>
