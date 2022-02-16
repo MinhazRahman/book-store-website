@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.main-content-book-detail{
+	margin: 0!important;
+	float:center;
+	background: #f1f2f4;
+}
+
+.container{
+	margin: 0 auto;
+	padding:10px;
+	float:center;
+	background-color: #f1f2f4;
+}
+
+.left-book-detail{
+	width:33%;
+	height:400px;
+	float:left;
+	background:white;
+}
+
+.center-book-detail{
+	width:34%;
+	height:400px;
+	float:left;
+	background: #f1f2f4;
+	text-align: justify;
+  	text-justify: inter-word;
+}
+
+.right-book-detail{
+	width:33%;
+	height:400px;
+	float:left;
+	background:white;
+}
+
+.bottom-book-detail{
+	margin: auto;
+	padding: 20px;
+	width:100%;
+	height: 80px;
+	float:center;
+	background: grey;
+}
+
+.bottom-book-detail h2, button{
+	display:inline;
+	float:none;
+}
+
+
+.clear-book-detail{
+	clear:both;    
+}

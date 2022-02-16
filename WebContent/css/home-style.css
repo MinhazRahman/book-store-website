@@ -156,6 +156,7 @@ input{
 /* footer */
 
 .footer{
+	height: 80px;
 	background-color: #f1f2f4;
 }
 
