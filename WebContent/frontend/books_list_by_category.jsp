@@ -35,7 +35,7 @@
 						<img src="data:image/jpg;base64,${book.base64Image}" width="80" height="100"/>
 					</a>
 				</div>
-				<div><a href="view_book?id${book.bookId}"><b>${book.title}</b></a></div>
+				<div><a href="view_book?id=${book.bookId}"><b>${book.title}</b></a></div>
 				<div>Rating *****</div>
 				<div><i>by ${book.author}</i></div>
 				<div><b>$${book.price}</b></div>
