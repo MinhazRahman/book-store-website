@@ -7,14 +7,14 @@
   		<a class="navbar-brand" href="#">
     	<img src="images/homepage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
-    		My Bookstore
+    		The Online Bookstore
   		</span>
   		</a>
-  		<form class="form-inline">
+  		<form action="search" method="get" class="form-inline">
         	<div class="input-group">                    
             	<input type="text" name="keyword" class="form-control search-box" placeholder="Search">
               	<div class="input-group-append">
-                	<button type="button" class="btn"><span class="fa fa-search"></span></button>
+                	<button type="submit" class="btn"><span class="fa fa-search"></span></button>
                 </div>
              </div>
         </form>
