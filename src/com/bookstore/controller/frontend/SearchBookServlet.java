@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bookstore.controller.BaseServlet;
+import com.bookstore.service.BookServices;
 
 
 @WebServlet("/search")
@@ -20,8 +21,8 @@ public class SearchBookServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String keyword = request.getParameter("keyword");
-		response.getWriter().println(keyword);
+		BookServices bookServices = new BookServices(entityManager, request, response);
+		bookServices.search();
 	}
 
 }
