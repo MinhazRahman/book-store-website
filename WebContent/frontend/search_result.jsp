@@ -33,25 +33,36 @@
 		</c:if>
 		
 		<c:if test="${fn:length(result) > 0}">
-			<div align="center" style="width: 60%; margin: 0 auto;">
-				<h2>Search Results for "${keyword}"</h2>
+			<div align="left" style="width: 80%; margin: 0 auto;">
+				<h2>Search Results for "${keyword}":</h2>
 				<c:forEach var="book" items="${result}">
-					<div style="display: inline-block; margin: 10px;">
-						<div>
-							<a href="view_book?id=${book.bookId}"> <img
-								src="data:image/jpg;base64,${book.base64Image}" width="80"
-								height="100" />
-							</a>
+					<div>
+						<div style="display: inline-block; margin: 10px; width: 10%;">
+							<div align = "left">
+								<a href="view_book?id=${book.bookId}"> <img
+									src="data:image/jpg;base64,${book.base64Image}" width="128"
+									height="164" />
+								</a>
+							</div>
 						</div>
-						<div>
-							<a href="view_book?id=${book.bookId}"><b>${book.title}</b></a>
+						
+						<div style="display: inline-block; margin: 10px; vertical-align: top; width: 60%;" align="left">
+							<div>
+								<h4><a href="view_book?id=${book.bookId}"><b>${book.title}</b></a></h4>
+							</div>
+							<div>Rating *****</div>
+							<div>
+								<i>by ${book.author}</i>
+							</div>
+							<div>
+								<p> ${fn:substring(book.description, 0, 100)}... </p>
+							</div>
 						</div>
-						<div>Rating *****</div>
-						<div>
-							<i>by ${book.author}</i>
-						</div>
-						<div>
-							<b>$${book.price}</b>
+						<div style="display: inline-block; margin: 10px; vertical-align: top;" align="right">
+								<h6><b>$${book.price}</b></h6> <br>
+					
+								<h6><a href="#">Add To Cart</a></h6>
+								
 						</div>
 					</div>
 				</c:forEach>
