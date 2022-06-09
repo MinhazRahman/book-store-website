@@ -332,8 +332,9 @@ public class BookServices extends BaseServices{
 			result = bookDAO.search(keyword);
 		}
 		
-		// set result as the attribute of the request
-		request.setAttribute("result", result)	;
+		// set keyword and result as the attribute of the request
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("result", result);
 		
 		// forward the request and response to destination file
 		String resultPage = "frontend/search_result.jsp";
