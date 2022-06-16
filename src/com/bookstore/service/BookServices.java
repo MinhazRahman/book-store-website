@@ -24,10 +24,11 @@ public class BookServices extends BaseServices{
 	private BookDAO bookDAO;
 	private CategoryDAO categoryDAO;
 
-	public BookServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		super(entityManager, request, response);
-		bookDAO = new BookDAO(entityManager);
-		categoryDAO = new CategoryDAO(entityManager);
+	public BookServices(HttpServletRequest request, HttpServletResponse response) {
+		super(request, response);
+		
+		bookDAO = new BookDAO();
+		categoryDAO = new CategoryDAO();
 	}
 	
 	// retrieves all the books from the database, sets the request attributes
