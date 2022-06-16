@@ -133,5 +133,11 @@ public class JpaDAO<E> {
 		
 		return result;
 	}
+	
+	public void close() {
+		if(entityManagerFactory !=null) {
+			entityManagerFactory.close();
+		}
+	}
 
 }
