@@ -16,7 +16,7 @@ import com.bookstore.service.CategoryServices;
  * editCategory() method of CategoryServices class
  */
 @WebServlet("/admin/edit_category")
-public class EditCategoryServlet extends BaseServlet {
+public class EditCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public EditCategoryServlet() {
@@ -24,7 +24,7 @@ public class EditCategoryServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
+		CategoryServices categoryServices = new CategoryServices(request, response);
 		categoryServices.editCategory();
 	}
 
