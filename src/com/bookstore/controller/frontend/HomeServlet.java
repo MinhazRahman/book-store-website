@@ -19,7 +19,7 @@ import com.bookstore.entity.Category;
 //HomeServlet receives a request, processes it and finally
 //forwards the request to the destination JSP page, index.jsp
 @WebServlet("")
-public class HomeServlet extends BaseServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public HomeServlet() {
