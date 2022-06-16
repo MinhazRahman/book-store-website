@@ -24,15 +24,14 @@ import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
 /* JUnit 5 or JUnit Jupiter test case, the annotations are different from JUnit 4  */
-class BookDAOTest extends BaseDAOTest{
+class BookDAOTest{
 	
 	private static BookDAO bookDAO;
 
 	@BeforeAll
 	public static void setUp() {
-		BaseDAOTest.setUp();
 		// initialize the BookDAO object
-		bookDAO = new BookDAO(entityManager);
+		bookDAO = new BookDAO();
 	}
 
 	@Test
@@ -203,7 +202,7 @@ class BookDAOTest extends BaseDAOTest{
 	
 	@AfterAll
 	public static void tearDown() {
-		BaseDAOTest.setUp();
+		bookDAO.close();
 	}
 
 }
