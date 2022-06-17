@@ -282,8 +282,6 @@ public class BookServices extends BaseServices{
 		// retrieve the category by id from the database
 		Category category = categoryDAO.get(categoryId);
 		
-		// retrieve the list of category
-		List<Category> listCategory = categoryDAO.listAll();
 		
 		// retrieve list of books by category id
 		List<Book> listBooks = bookDAO.listByCategory(categoryId);
@@ -292,7 +290,6 @@ public class BookServices extends BaseServices{
 		// set book list, category list and category as the attribute of the request
 		request.setAttribute("category", category);
 		request.setAttribute("listBooks", listBooks);
-		request.setAttribute("listCategory", listCategory);
 		
 		// forward the request and the response to the destination page
 		String destinationPage = "frontend/books_list_by_category.jsp";
@@ -310,11 +307,8 @@ public class BookServices extends BaseServices{
 		
 		// find a book by id
 		Book book = bookDAO.get(bookId);
-		// retrieve the list of category
-		List<Category> listCategory = categoryDAO.listAll();
 		
-		// set the book and the listCategory objects as the attributes of the request
-		request.setAttribute("listCategory", listCategory);
+		// set the book object as the attributes of the request
 		request.setAttribute("book", book);
 		
 		// forward the request and response to destination file
