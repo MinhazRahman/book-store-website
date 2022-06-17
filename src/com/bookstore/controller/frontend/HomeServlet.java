@@ -19,7 +19,7 @@ import com.bookstore.entity.Category;
 //HomeServlet receives a request, processes it and finally
 //forwards the request to the destination JSP page, index.jsp
 @WebServlet("")
-public class HomeServlet extends BaseServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public HomeServlet() {
@@ -29,13 +29,12 @@ public class HomeServlet extends BaseServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CategoryDAO categoryDAO = new CategoryDAO(entityManager);
-		BookDAO bookDAO = new BookDAO(entityManager);
+		CategoryDAO categoryDAO = new CategoryDAO();
+		BookDAO bookDAO = new BookDAO();
 		
-		List<Category> listCategory = categoryDAO.listAll();
+
 		List<Book> listNewBooks = bookDAO.listNewBooks();
 		
-		request.setAttribute("listCategory", listCategory);
 		request.setAttribute("listNewBooks", listNewBooks);
 		
 		String homePage = "frontend/index.jsp";

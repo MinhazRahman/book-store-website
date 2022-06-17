@@ -22,15 +22,14 @@ import org.junit.jupiter.api.Test;
 import com.bookstore.entity.Users;
 
 /* JUnit 4 test case */
-public class UserDAOTest extends BaseDAOTest{
+public class UserDAOTest{
 	
 	private static UserDAO userDAO;
 
 	@BeforeAll
 	public static void setUp() {
-		BaseDAOTest.setUp();
 
-		userDAO = new UserDAO(entityManager);
+		userDAO = new UserDAO();
 	}
 
 	@Test
@@ -167,7 +166,7 @@ public class UserDAOTest extends BaseDAOTest{
 
 	@AfterAll
 	public static void tearDown() {
-		BaseDAOTest.tearDown();
+		userDAO.close();
 	}
 
 }

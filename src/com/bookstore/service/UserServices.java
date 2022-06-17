@@ -18,9 +18,9 @@ import com.bookstore.entity.Users;
 public class UserServices extends BaseServices{
 	private UserDAO userDAO;
 
-	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		super(entityManager, request, response);
-		userDAO = new UserDAO(entityManager);
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+		super(request, response);
+		userDAO = new UserDAO();
 	}
 
 	public void listUser() throws ServletException, IOException {

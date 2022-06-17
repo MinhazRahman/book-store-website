@@ -15,7 +15,7 @@ import com.bookstore.service.BookServices;
  * on the list_book.jsp page
  */
 @WebServlet("/admin/edit_book")
-public class EditBookServlet extends BaseServlet {
+public class EditBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public EditBookServlet() {
@@ -23,7 +23,7 @@ public class EditBookServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookServices bookServices = new BookServices(entityManager, request, response);
+		BookServices bookServices = new BookServices(request, response);
 		bookServices.editBook();
 	}
 

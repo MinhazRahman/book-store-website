@@ -14,15 +14,14 @@ import org.junit.jupiter.api.BeforeAll;
 import com.bookstore.entity.Category;
 
 /* JUnit 4 test case */
-public class CategoryDAOTest extends BaseDAOTest {
+public class CategoryDAOTest{
 
 	private static CategoryDAO categoryDAO;
 
 	@BeforeAll
 	public static void setUp() {
-		BaseDAOTest.setUp();
 		
-		categoryDAO = new CategoryDAO(entityManager);
+		categoryDAO = new CategoryDAO();
 	}
 
 	@Test
@@ -116,6 +115,6 @@ public class CategoryDAOTest extends BaseDAOTest {
 
 	@AfterAll
 	public static void tearDown() {
-		BaseDAOTest.setUp();
+		categoryDAO.close();
 	}
 }

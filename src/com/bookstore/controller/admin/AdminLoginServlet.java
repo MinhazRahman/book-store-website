@@ -17,7 +17,7 @@ import com.bookstore.service.UserServices;
  * doPost() method calls the login() method of the UserServices class
  */
 @WebServlet("/admin/login")
-public class AdminLoginServlet extends BaseServlet {
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public AdminLoginServlet() {
@@ -25,7 +25,7 @@ public class AdminLoginServlet extends BaseServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices = new UserServices(entityManager, request, response);
+		UserServices userServices = new UserServices(request, response);
 		userServices.login();
 	}
 
