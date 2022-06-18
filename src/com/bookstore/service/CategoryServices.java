@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
@@ -108,12 +109,15 @@ public class CategoryServices extends BaseServices {
 	public void deleteCategory() throws ServletException, IOException {
 		// get parameters from request object
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		BookDAO bookDAO = new BookDAO();
+		long numberOfBooks = bookDAO.countByCategory(categoryId);
+		String message;
 		
 		// find the category by id in the database and 
 		// if the category is not found then show the error message
 		Category category = categoryDAO.get(categoryId);
 		if(category == null) {
-			String message = "Couldn't find the category with id " + categoryId + 
+			message = "Couldn't find the category with id " + categoryId + 
 								", or it might have been deleted!!";
 			request.setAttribute("message", message);
 			// get RequestDispatcher object and 
@@ -122,15 +126,19 @@ public class CategoryServices extends BaseServices {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(resource);
 			requestDispatcher.forward(request, response);
 			return;	
+		}else if(numberOfBooks > 0){
+			message = "Couldn't delete the category!";
+			
 		}else {
 			
 			// delete category from the database
 			categoryDAO.delete(categoryId);
 			
 			// show the updated list of categories
-			String message = "Category has been deleted successfully!!";
-			listCategory(message);
+			message = "Category has been deleted successfully!!";
 		}
+		
+		listCategory(message);
 	}
 
 }
