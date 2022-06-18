@@ -63,7 +63,7 @@
 		<c:if test="${book == null}">
 			<form action="create_book" method="post" id="book-form" enctype="multipart/form-data">
 		</c:if>
-			<table>
+			<table class= "form">
 				<tr>
 					<td align = "right">Category:</td>
 					<td align = "left">
