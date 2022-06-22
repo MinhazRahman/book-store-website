@@ -1,13 +1,18 @@
 package com.bookstore.entity;
 // Generated Jul 21, 2020 12:53:05 AM by Hibernate Tools 5.2.12.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,8 +24,16 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "customer", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@NamedQueries({
+	@NamedQuery(name = "Customer.findAll", query="SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
+	@NamedQuery(name = "Customer.countAll", query="SELECT COUNT(*) FROM Customer c"),
+})
 public class Customer implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int customerId;
 	private String email;
 	private String fullname;
@@ -69,7 +82,7 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "customer_id", unique = true, nullable = false)
 	public int getCustomerId() {
 		return this.customerId;

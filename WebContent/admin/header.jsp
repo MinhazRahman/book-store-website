@@ -2,10 +2,10 @@
 <div align="center">
 	<!-- Image and text -->
 	<nav id="main-header" class="navbar navbar-light">
-  		<a class="navbar-brand" href="#">
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/">
     	<img src="../images/adminpage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
-    		My Bookstore
+    		The Online Bookstore
   		</span>
   		</a>
   		<form class="form-inline">

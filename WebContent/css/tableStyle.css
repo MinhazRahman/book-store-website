@@ -30,6 +30,12 @@
   color: black;
 }
 
+table.form{
+	border: 0px;
+	padding: 4px;
+	width: 80%;
+}
+
 
 
 

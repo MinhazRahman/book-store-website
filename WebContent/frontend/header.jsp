@@ -4,7 +4,7 @@
 	<div>
 			<!-- Image and text -->
 	<nav id="main-header" class="navbar navbar-light">
-  		<a class="navbar-brand" href="#">
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
     	<img src="images/homepage/booklogo.svg" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
   		<span class="navbar-text">
     		The Online Bookstore
