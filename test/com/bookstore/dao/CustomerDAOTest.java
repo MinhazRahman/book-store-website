@@ -90,6 +90,14 @@ public class CustomerDAOTest {
 		assertTrue(customers == 2);
 	}
 	
+	@Test
+	public void testFindByEmail() {
+		String email = "doe1@example.com";
+		Customer customer = customerDAO.findByEmail(email);
+		
+		assertNull(customer);
+	}
+	
 	@AfterAll
 	public static void tearDown() {
 		customerDAO.close();
