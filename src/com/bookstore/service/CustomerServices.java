@@ -153,4 +153,15 @@ public class CustomerServices extends BaseServices{
 		
 	}
 
+
+	public void deleteCustomer() throws ServletException, IOException {
+		// get the customer id from the request parameter and parse it to Integer
+		Integer customerId = Integer.parseInt(request.getParameter("id"));
+		// delete the customer by id
+		customerDAO.delete(customerId);
+		
+		String message = "Deleted the customer successfully.";
+		listCustomers(message);
+	}
+
 }
