@@ -86,7 +86,7 @@
 					customerId = $(this).attr("id");
 					if (confirm("Are you sure, you want to delete Customer with id "
 							+ customerId + "?")) {
-						window.location = "delete_customer?customerId=" + customerId;
+						window.location = "delete_customer?id=" + customerId;
 					}
 				});
 			});
