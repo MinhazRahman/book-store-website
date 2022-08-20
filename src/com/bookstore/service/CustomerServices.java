@@ -104,4 +104,53 @@ public class CustomerServices extends BaseServices{
 		requestDispatcher.forward(request, response);
 	}
 
+
+	public void updateCustomer() throws ServletException, IOException {
+		String message;
+		
+		// get the customer id from the request parameter and parse it to Integer
+		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+		// get email of the customer from the request parameter
+		String email = request.getParameter("email");
+				
+		// retrieve the Customer by email
+		Customer customer = customerDAO.findByEmail(email);
+		
+		if(customer != null && customer.getCustomerId() != customerId) {
+			message = "Couldn't update the customer info, Please use a different email address.";
+		}
+		else {
+			// retrieve all the field values from the HttpServletRequest
+			String fullName = request.getParameter("fullName");
+			String password = request.getParameter("password");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			String city = request.getParameter("city");
+			String zipCode = request.getParameter("zipCode");
+			String country = request.getParameter("country");
+			
+			// retrieve the Customer by id and set all the properties of the Customer
+			Customer customerToBeUpdated = customerDAO.get(customerId);
+			
+			customerToBeUpdated.setCustomerId(customerId);
+			customerToBeUpdated.setEmail(email);
+			customerToBeUpdated.setFullname(fullName);
+			customerToBeUpdated.setPassword(password);
+			customerToBeUpdated.setPhone(phone);
+			customerToBeUpdated.setAddress(address);
+			customerToBeUpdated.setCity(city);
+			customerToBeUpdated.setZipcode(zipCode);
+			customerToBeUpdated.setCountry(country);
+			
+			// save the updated info
+			customerDAO.update(customerToBeUpdated);
+			
+			message = "Customer updated successfully.";
+		}
+		
+		// show the list of all the customers
+		listCustomers(message);
+		
+	}
+
 }
