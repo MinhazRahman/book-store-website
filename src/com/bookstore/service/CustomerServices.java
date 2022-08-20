@@ -87,4 +87,21 @@ public class CustomerServices extends BaseServices{
 		}
 	}
 
+
+	public void editCustomer() throws ServletException, IOException {
+		// get the customer id from the request parameter and parse it to Integer
+		Integer customerId = Integer.parseInt(request.getParameter("id"));
+		
+		// get the Customer by id
+		Customer customer = customerDAO.get(customerId);
+		
+		// set attribute to the network request
+		request.setAttribute("customer", customer);
+		
+		// forward the request to the customer_form.jsp page
+		String editPage = "customer_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+	}
+
 }
