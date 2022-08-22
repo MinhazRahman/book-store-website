@@ -1,4 +1,4 @@
-package com.bookstore.controller.frontend;
+package com.bookstore.controller.frontend.book;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.bookstore.controller.BaseServlet;
 import com.bookstore.service.BookServices;
 
-@WebServlet("/view_book")
-public class ViewBookServlet extends HttpServlet {
+/**
+ * ViewBooksByCategoryServlet is invoked when we click on 
+ * each category on home page
+ */
+@WebServlet("/view_category")
+public class ViewBooksByCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ViewBookServlet() {
+
+    public ViewBooksByCategoryServlet() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookServices bookServices = new BookServices(request, response);
-		bookServices.viewBookDetail();
+		bookServices.listBooksByCategory();
 	}
 
 }
