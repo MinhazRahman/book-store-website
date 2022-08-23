@@ -164,4 +164,51 @@ public class CustomerServices extends BaseServices{
 		listCustomers(message);
 	}
 
+
+	public void registerCustomer() throws ServletException, IOException {
+		// retrieve the value of the email field from the HttpServletRequest 
+		String email = request.getParameter("email");
+		Customer customer = customerDAO.findByEmail(email);
+		String message = null;
+		
+		if(customer != null) {
+			message = "Customer Registration failed. Email address already exists!";
+		}else {
+			// retrieve all the field values from the HttpServletRequest
+			String fullName = request.getParameter("fullName");
+			String password = request.getParameter("password");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			String city = request.getParameter("city");
+			String zipCode = request.getParameter("zipCode");
+			String country = request.getParameter("country");
+			
+			// create a Customer object and set all the properties of the object
+			Customer newCustomer = new Customer();
+			
+			newCustomer.setEmail(email);
+			newCustomer.setFullname(fullName);
+			newCustomer.setPassword(password);
+			newCustomer.setPhone(phone);
+			newCustomer.setAddress(address);
+			newCustomer.setCity(city);
+			newCustomer.setZipcode(zipCode);
+			newCustomer.setCountry(country);
+			
+			// create and save the new Customer in the DB
+			customerDAO.create(newCustomer);
+			
+			message = "Thank you for the registration!<br/>" + "<a href='login'>Click here</a> to login";
+			
+		}
+		
+		// set request attribute
+		request.setAttribute("message", message);
+		
+		// forward the request to the message.jsp page
+		String messagePage = "frontend/message.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
+		requestDispatcher.forward(request, response);
+	}
+
 }
