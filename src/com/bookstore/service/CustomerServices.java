@@ -21,7 +21,6 @@ public class CustomerServices extends BaseServices{
 		customerDAO = new CustomerDAO();
 	}
 	
-	
 	// retrieves all the customers from the database, sets the request attributes
 	// and forward the request and response to a server resource
 	public void listCustomers(String message) throws ServletException, IOException {
@@ -58,26 +57,10 @@ public class CustomerServices extends BaseServices{
 			message = "Email address already exists.";
 			listCustomers(message);
 		}else {
-			// retrieve all the field values from the HttpServletRequest
-			String fullName = request.getParameter("fullName");
-			String password = request.getParameter("password");
-			String phone = request.getParameter("phone");
-			String address = request.getParameter("address");
-			String city = request.getParameter("city");
-			String zipCode = request.getParameter("zipCode");
-			String country = request.getParameter("country");
 			
 			// create a Customer object and set all the properties of the object
 			Customer newCustomer = new Customer();
-			
-			newCustomer.setEmail(email);
-			newCustomer.setFullname(fullName);
-			newCustomer.setPassword(password);
-			newCustomer.setPhone(phone);
-			newCustomer.setAddress(address);
-			newCustomer.setCity(city);
-			newCustomer.setZipcode(zipCode);
-			newCustomer.setCountry(country);
+			setFieldValuesOf(newCustomer);
 			
 			// create and save the new Customer in the DB
 			customerDAO.create(newCustomer);
@@ -86,7 +69,6 @@ public class CustomerServices extends BaseServices{
 			listCustomers(message);
 		}
 	}
-
 
 	public void editCustomer() throws ServletException, IOException {
 		// get the customer id from the request parameter and parse it to Integer
@@ -104,7 +86,6 @@ public class CustomerServices extends BaseServices{
 		requestDispatcher.forward(request, response);
 	}
 
-
 	public void updateCustomer() throws ServletException, IOException {
 		String message;
 		
@@ -120,27 +101,10 @@ public class CustomerServices extends BaseServices{
 			message = "Couldn't update the customer info, Please use a different email address.";
 		}
 		else {
-			// retrieve all the field values from the HttpServletRequest
-			String fullName = request.getParameter("fullName");
-			String password = request.getParameter("password");
-			String phone = request.getParameter("phone");
-			String address = request.getParameter("address");
-			String city = request.getParameter("city");
-			String zipCode = request.getParameter("zipCode");
-			String country = request.getParameter("country");
 			
 			// retrieve the Customer by id and set all the properties of the Customer
 			Customer customerToBeUpdated = customerDAO.get(customerId);
-			
-			customerToBeUpdated.setCustomerId(customerId);
-			customerToBeUpdated.setEmail(email);
-			customerToBeUpdated.setFullname(fullName);
-			customerToBeUpdated.setPassword(password);
-			customerToBeUpdated.setPhone(phone);
-			customerToBeUpdated.setAddress(address);
-			customerToBeUpdated.setCity(city);
-			customerToBeUpdated.setZipcode(zipCode);
-			customerToBeUpdated.setCountry(country);
+			setFieldValuesOf(customerToBeUpdated);
 			
 			// save the updated info
 			customerDAO.update(customerToBeUpdated);
@@ -153,18 +117,6 @@ public class CustomerServices extends BaseServices{
 		
 	}
 
-
-	public void deleteCustomer() throws ServletException, IOException {
-		// get the customer id from the request parameter and parse it to Integer
-		Integer customerId = Integer.parseInt(request.getParameter("id"));
-		// delete the customer by id
-		customerDAO.delete(customerId);
-		
-		String message = "Deleted the customer successfully.";
-		listCustomers(message);
-	}
-
-
 	public void registerCustomer() throws ServletException, IOException {
 		// retrieve the value of the email field from the HttpServletRequest 
 		String email = request.getParameter("email");
@@ -174,26 +126,10 @@ public class CustomerServices extends BaseServices{
 		if(customer != null) {
 			message = "Customer Registration failed. Email address already exists!";
 		}else {
-			// retrieve all the field values from the HttpServletRequest
-			String fullName = request.getParameter("fullName");
-			String password = request.getParameter("password");
-			String phone = request.getParameter("phone");
-			String address = request.getParameter("address");
-			String city = request.getParameter("city");
-			String zipCode = request.getParameter("zipCode");
-			String country = request.getParameter("country");
 			
 			// create a Customer object and set all the properties of the object
 			Customer newCustomer = new Customer();
-			
-			newCustomer.setEmail(email);
-			newCustomer.setFullname(fullName);
-			newCustomer.setPassword(password);
-			newCustomer.setPhone(phone);
-			newCustomer.setAddress(address);
-			newCustomer.setCity(city);
-			newCustomer.setZipcode(zipCode);
-			newCustomer.setCountry(country);
+			setFieldValuesOf(newCustomer);
 			
 			// create and save the new Customer in the DB
 			customerDAO.create(newCustomer);
@@ -210,5 +146,38 @@ public class CustomerServices extends BaseServices{
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
 		requestDispatcher.forward(request, response);
 	}
+
+	private void setFieldValuesOf(Customer customer) {
+		// retrieve all the field values from the HttpServletRequest
+		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullName");
+		String password = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String zipCode = request.getParameter("zipCode");
+		String country = request.getParameter("country");
+		
+		// set all the properties for the Customer
+		customer.setEmail(email);
+		customer.setFullname(fullName);
+		customer.setPassword(password);
+		customer.setPhone(phone);
+		customer.setAddress(address);
+		customer.setCity(city);
+		customer.setZipcode(zipCode);
+		customer.setCountry(country);
+	}
+	
+	public void deleteCustomer() throws ServletException, IOException {
+		// get the customer id from the request parameter and parse it to Integer
+		Integer customerId = Integer.parseInt(request.getParameter("id"));
+		// delete the customer by id
+		customerDAO.delete(customerId);
+		
+		String message = "Deleted the customer successfully.";
+		listCustomers(message);
+	}
+
 
 }
