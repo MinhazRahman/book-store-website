@@ -201,12 +201,18 @@ public class CustomerServices extends BaseServices{
 		}else {
 			// set session attribute
 			request.getSession().setAttribute("loggedInCustomer", customer);
-			String customerProfilePage = "frontend/customer_profile.jsp";
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
-			requestDispatcher.forward(request, response);
+			// when the customer is logged-in successfully, then show customer profile
+			showCustomerProfile();
 		}
 		
 	}
+	
+	public void showCustomerProfile() throws ServletException, IOException {
+		String customerProfilePage = "frontend/customer_profile.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
+		requestDispatcher.forward(request, response);
+	}
+	
 
 
 }
