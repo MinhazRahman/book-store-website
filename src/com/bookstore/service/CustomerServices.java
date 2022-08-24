@@ -179,5 +179,34 @@ public class CustomerServices extends BaseServices{
 		listCustomers(message);
 	}
 
+	public void displayLoginPage() throws ServletException, IOException {
+		String loginPage = "frontend/login.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPage);
+		requestDispatcher.forward(request, response);
+	}
+
+	public void loginCustomer() throws ServletException, IOException {
+		// retrieve the parameters from the HttpServletRequest object request
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		Customer customer = customerDAO.checkLogin(email, password);
+		
+		String message = null;
+		
+		if(customer == null) {
+			message = "Invalid email address or password!";
+			request.setAttribute("message", message);
+			displayLoginPage();
+		}else {
+			// set session attribute
+			request.getSession().setAttribute("loggedInCustomer", customer);
+			String customerProfilePage = "frontend/customer_profile.jsp";
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
+			requestDispatcher.forward(request, response);
+		}
+		
+	}
+
 
 }
