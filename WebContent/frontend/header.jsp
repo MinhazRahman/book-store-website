@@ -20,12 +20,27 @@
         </form>
         
          <span class="navbar-text">
-         	<a href="login">
-         		<i class="fa fa-sign-in" aria-hidden="true"></i> Sign In
-         	</a>
-         	<a href="register">
-         		<i class="fa fa-registered" aria-hidden="true"></i> Register
-         	</a>
+         	<c:if test="${loggedInCustomer == null}">
+	         	<a href="login">
+	         		<i class="fa fa-sign-in" aria-hidden="true"></i> Sign In
+	         	</a>
+	         	<a href="register">
+	         		<i class="fa fa-user-plus" aria-hidden="true"></i> Register
+	         	</a>
+         	</c:if>
+         	
+         	<c:if test="${loggedInCustomer != null}">
+	         	<a href="view_profile"> Welcome, ${loggedInCustomer.fullname}</a>
+	         	<a href="view_orders">
+	         		<i class="fa fa-history" aria-hidden="true"></i> My Orders
+	         	</a>
+	         	
+	         	<a href="logout" class="logout-link">
+	         		
+         			<i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span>
+         		</a>
+         	</c:if>
+
          	<a href="view_cart">
          		<i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
          	</a>
