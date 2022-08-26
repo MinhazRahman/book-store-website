@@ -159,9 +159,16 @@ public class CustomerServices extends BaseServices{
 		String country = request.getParameter("country");
 		
 		// set all the properties for the Customer
-		customer.setEmail(email);
+		if(email != null && !email.equals("")) {
+			customer.setEmail(email);
+		}
+		
 		customer.setFullname(fullName);
-		customer.setPassword(password);
+		
+		if(password != null && !password.equals("")) {
+			customer.setPassword(password);
+		}
+		
 		customer.setPhone(phone);
 		customer.setAddress(address);
 		customer.setCity(city);
@@ -217,6 +224,15 @@ public class CustomerServices extends BaseServices{
 		String customerProfilePage = "frontend/edit_customer_profile_form.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
 		requestDispatcher.forward(request, response);	
+	}
+
+	public void updateCustomerProfile() throws ServletException, IOException {
+
+		Customer customer = (Customer) request.getSession().getAttribute("loggedInCustomer");
+		setFieldValuesOf(customer);
+		customerDAO.update(customer);
+		
+		showCustomerProfile();
 	}
 	
 
