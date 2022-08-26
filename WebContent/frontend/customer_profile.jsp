@@ -9,6 +9,7 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/home-style.css">
+	<link rel="stylesheet" type="text/css" href="css/tableStyle.css">
 	
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,8 +28,50 @@
 	
 	<div align = "center">
 		<br/>
-		<h3>Login successful</h3>
+		<h3>Welcome, ${loggedInCustomer.fullname}</h3>
 		<br/>
+		
+		<table class="list_items">
+			<tr>
+				<td><b>Email address: </b></td>
+				<td>${loggedInCustomer.email}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>Full Name: </b></td>
+				<td>${loggedInCustomer.email}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>Phone Number: </b></td>
+				<td>${loggedInCustomer.phone}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>Address: </b></td>
+				<td>${loggedInCustomer.address}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>City: </b></td>
+				<td>${loggedInCustomer.city}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>Zip Code: </b></td>
+				<td>${loggedInCustomer.zipcode}</td>	
+			</tr>
+			
+			<tr>
+				<td><b>Country: </b></td>
+				<td>${loggedInCustomer.country}</td>	
+			</tr>
+			
+			<tr><td colspan="2">&nbsp;</td></tr>
+			
+			<tr><td colspan="2"><a href="edit_customer_profile">Edit My Profile</a></td></tr>
+			
+		</table>
 	</div>
 	
 	<jsp:directive.include file = "footer.jsp"/>
