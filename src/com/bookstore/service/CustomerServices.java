@@ -212,6 +212,12 @@ public class CustomerServices extends BaseServices{
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
 		requestDispatcher.forward(request, response);
 	}
+
+	public void showEditCustomerProfileForm() throws ServletException, IOException {
+		String customerProfilePage = "frontend/edit_customer_profile_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(customerProfilePage);
+		requestDispatcher.forward(request, response);	
+	}
 	
 
 
