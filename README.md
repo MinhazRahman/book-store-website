@@ -1,6 +1,6 @@
-# *Online Bookstore*
+# *The Online Bookstore*
 
-**Online Bookstore** is a Java web application that allows users to buy books online.Users of the system: visitors/browsers, registered customers, store clerks, store managers/super-users.
+**The Online Bookstore** is a Java web application that allows users to buy books online.Users of the system: visitors/browsers, registered customers, store clerks, store managers/super-users.
 
 
 ## Main features of the system
@@ -20,6 +20,10 @@
 <img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Database Schema
+
+<img src = "db_schema.png" width = 600>
 
 ## Notes
 
