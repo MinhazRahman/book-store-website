@@ -31,7 +31,7 @@ public class ReviewDAOTest {
 		Review review = new Review();
 		Book book = new Book();
 		
-		book.setBookId(35);
+		book.setBookId(36);
 		
 		Customer customer = new Customer();
 		customer.setCustomerId(22);
