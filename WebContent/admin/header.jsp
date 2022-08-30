@@ -41,7 +41,7 @@
     	<a href="list_customers" class="nav-item nav-link">
         	<i class="fa fa-users"></i> Customers
     	</a>
-    	<a href="reviews" class="nav-item nav-link">
+    	<a href="list_reviews" class="nav-item nav-link">
         	<i class="fa fa-star"></i> Reviews
     	</a>
     	<a href="orders" class="nav-item nav-link">
