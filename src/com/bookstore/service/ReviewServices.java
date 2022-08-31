@@ -63,4 +63,24 @@ public class ReviewServices extends BaseServices{
 		requestDispatcher.forward(request, response);
 	}
 
+	public void updateReview() throws ServletException, IOException {
+		// retrieve the parameters from the network request
+		Integer reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		String headline = request.getParameter("headline");
+		String comment = request.getParameter("comment");
+		
+		// retrieve the Review by id from the DB
+		Review reviewToBeUpdated = reviewDAO.get(reviewId);
+		
+		// set the updated values
+		reviewToBeUpdated.setHeadline(headline);
+		reviewToBeUpdated.setComment(comment);
+		
+		// save the Review object into the DB and show the list of all reviews
+		reviewDAO.update(reviewToBeUpdated);
+		
+		String message = "Review updated successfully!";
+		listAllReviews(message);
+	}
+
 }
