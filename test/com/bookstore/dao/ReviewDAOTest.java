@@ -31,7 +31,7 @@ public class ReviewDAOTest {
 		Review review = new Review();
 		Book book = new Book();
 		
-		book.setBookId(36);
+		book.setBookId(37);
 		
 		Customer customer = new Customer();
 		customer.setCustomerId(22);
@@ -39,9 +39,9 @@ public class ReviewDAOTest {
 		review.setBook(book);
 		review.setCustomer(customer);
 		
-		review.setHeadline("A great book for system design!");
-		review.setRating(5);
-		review.setComment("Learning a lot about system desing.");
+		review.setHeadline("Good for DSA.");
+		review.setRating(4);
+		review.setComment("If you want to learn the basics about DSA.");
 		
 		Review savedReview = reviewDAO.create(review);
 		
