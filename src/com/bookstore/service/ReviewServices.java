@@ -48,4 +48,19 @@ public class ReviewServices extends BaseServices{
 		listAllReviews(null);
 	}
 
+	public void showEditReviewForm() throws ServletException, IOException {
+		// retrieve the review id from the network request
+		Integer reviewId = Integer.parseInt(request.getParameter("id"));
+		
+		// retrieve the Review from the DB
+		Review reviewToBeUpdated = reviewDAO.get(reviewId);
+		
+		// set the request attribute
+		request.setAttribute("reviewToBeUpdated", reviewToBeUpdated);
+		
+		String editReviewPage = "edit_review_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editReviewPage);
+		requestDispatcher.forward(request, response);
+	}
+
 }
