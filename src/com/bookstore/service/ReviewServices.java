@@ -83,4 +83,16 @@ public class ReviewServices extends BaseServices{
 		listAllReviews(message);
 	}
 
+	public void deleteReview() throws ServletException, IOException {
+		// retrieve the review id from the request parameter
+		Integer reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		
+		// delete the Review by id 
+		reviewDAO.delete(reviewId);
+		
+		// show the updated list of reviews
+		String message = "Deleted the review successfully!";
+		listAllReviews(message);
+	}
+
 }
