@@ -78,9 +78,9 @@
 		$(document).ready(function(){
 			$(".deleteLink").each(function(){
 				$(this).on("click", function(){
-					categoryId = $(this).attr("id");
-					if(confirm("Are you sure, you want to delete category with id " + categoryId + "?" )){
-						window.location = "delete_category?categoryId=" + categoryId;
+					reviewId = $(this).attr("id");
+					if(confirm("Are you sure, you want to delete review with id " + reviewId + "?" )){
+						window.location = "delete_review?reviewId=" + reviewId;
 					}
 				});
 			});
