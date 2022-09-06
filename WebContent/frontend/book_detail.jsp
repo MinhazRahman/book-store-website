@@ -37,7 +37,7 @@
 			</div>
 			
 			<div class="center-book-detail">
-				<h3> Rating *** </h3> <br>
+				<h3> <jsp:directive.include file = "book_rating.jsp" /> </h3> <br>
 				${book.description}
 			</div>
 			
