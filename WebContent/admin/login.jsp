@@ -29,7 +29,7 @@
 <body>
 
 	<div align="center">
-		<h1>Book Store Administration</h1>
+		<h1>The Online Bookstore</h1>
 		<h2>Admin Login</h2>
 		<c:if test="${message != null}">
 			<div align="center">
@@ -56,29 +56,6 @@
 		
 		</form>
 	</div>
-	
-	<script type="text/javascript">
-
-		$(document).ready(function() {
-
-			$("#formLogin").validate({
-				rules : {
-					email : {
-						required : true,
-						email : true
-					},
-					password : "required",
-				},
-				messages : {
-					email : {
-						required : "Please enter your email",
-						email : "Please enter a valid email address!"
-					},
-					password : "Please enter password"
-				}
-			});
-		});
-	</script>
 
 </body>
 </html>
