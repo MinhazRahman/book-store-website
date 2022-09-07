@@ -39,9 +39,9 @@ public class ReviewDAOTest {
 		review.setBook(book);
 		review.setCustomer(customer);
 		
-		review.setHeadline("Good for DSA.");
+		review.setHeadline("A good book!");
 		review.setRating(4);
-		review.setComment("If you want to learn the basics about DSA.");
+		review.setComment("Teaches you the basics of dsa.");
 		
 		Review savedReview = reviewDAO.create(review);
 		

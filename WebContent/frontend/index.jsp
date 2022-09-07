@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>My Bookstore - Buy books online</title>
+	<title>The Online Bookstore - Buy books online</title>
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="css/home-style.css">
 	
@@ -41,7 +41,9 @@
 					<div>
 						<a href="view_book?id=${book.bookId}"><b>${book.title}</b></a>
 					</div>
-					<div>Rating *****</div>
+					<div>
+						<jsp:directive.include file = "book_rating.jsp" />
+					</div>
 					<div>
 						<i>by ${book.author}</i>
 					</div>
