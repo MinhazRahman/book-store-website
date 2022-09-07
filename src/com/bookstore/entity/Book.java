@@ -7,6 +7,8 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -193,7 +195,13 @@ public class Book implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
 	public Set<Review> getReviews() {
-		return this.reviews;
+		// use comparator to sort the reviews by date
+		Set<Review> sortedReviews = new TreeSet<>((a, b) -> b.getReviewTime().compareTo(a.getReviewTime()));
+		
+		// add the reviews to the sorted set of reviews
+		sortedReviews.addAll(reviews);
+		
+		return sortedReviews;
 	}
 
 	public void setReviews(Set<Review> reviews) {
@@ -274,7 +282,7 @@ public class Book implements java.io.Serializable {
 		return getRatingString(averageRating);
 	}
 	
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
