@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${book.title}- Buy books online</title>
+<title>${book.title}-Buy books online</title>
 
 <!-- Styles -->
 <link rel="stylesheet" type="text/css" href="css/home-style.css">
@@ -38,6 +38,10 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 	crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -69,13 +73,15 @@
 			<div class="clear-book-detail"></div>
 
 			<div class="bottom-book-detail">
-				<h2><a id="reviews">Customer reviews</a></h2>
-				<button type="submit" class="site-button">Write a Review</button>
+				<h2>
+					<a id="reviews">Customer reviews</a>
+				</h2>
+				<button type="submit" id="btnWriteReview" class="site-button">Write a Review</button>
 
 			</div>
-			
+
 			<div class="book-review">
-				<table border = "0">
+				<table border="0">
 					<c:forEach items="${book.reviews}" var="review">
 						<tr>
 							<td><c:forTokens items="${review.stars}" delims=","
@@ -87,15 +93,17 @@
 									<c:if test="${star eq 'off'}">
 										<img src="images/rating-stars/rating_off.png" />
 									</c:if>
-								</c:forTokens>
-									 &nbsp;<b>${review.headline}</b>
-								</td>
+								</c:forTokens> &nbsp;<b>${review.headline}</b></td>
 						</tr>
 						<tr>
 							<td>by ${review.customer.fullname} on ${review.reviewTime}</td>
 						</tr>
-						<tr><td><i>${review.comment}</i></td></tr>
-						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td><i>${review.comment}</i></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
 
 					</c:forEach>
 				</table>
@@ -108,6 +116,17 @@
 
 
 	<jsp:directive.include file="footer.jsp" />
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			
+			$("#btnWriteReview").click(function() {
+				window.location = 'write_review?bookId=' + ${book.bookId};
+			});
+		});
+	
+	</script>
 
 
 </body>

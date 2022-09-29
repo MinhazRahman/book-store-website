@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class CustomerLoginFilter implements Filter {
 	
 	private static final String[] loginRequiredURLs = {
-			"/view_profile", "/edit_customer_profile", "/update_customer_profile"
+			"/view_profile", "/edit_customer_profile", "/update_customer_profile", "/write_review"
 	};
 
     public CustomerLoginFilter() {
@@ -50,6 +50,16 @@ public class CustomerLoginFilter implements Filter {
 		
 		// if the customer is not logged-in forward the request to the login.jsp page
 		if(!loggedIn && isLoginRequiredFor(requestURL)) {
+			String queryString = httpRequest.getQueryString();
+			String redirectURL = requestURL;
+			
+			// concatenate the query string to the redirect URL
+			if(queryString != null) {
+				redirectURL = redirectURL.concat("?").concat(queryString);
+			}
+			
+			httpSession.setAttribute("redirectURL", redirectURL);
+			
 			String loginPage = "frontend/login.jsp";
 			RequestDispatcher requestDispatcher = httpRequest.getRequestDispatcher(loginPage);
 			requestDispatcher.forward(request, response);
