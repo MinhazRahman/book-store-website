@@ -1,5 +1,6 @@
 package com.bookstore.service;
 
+
 import java.io.IOException;
 import java.util.List;
 
@@ -7,8 +8,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.ReviewDAO;
+import com.bookstore.entity.Book;
+import com.bookstore.entity.Customer;
 import com.bookstore.entity.Review;
 
 public class ReviewServices extends BaseServices{
@@ -93,6 +98,69 @@ public class ReviewServices extends BaseServices{
 		// show the updated list of reviews
 		String message = "Deleted the review successfully!";
 		listAllReviews(message);
+	}
+
+	public void showWriteReviewForm() throws ServletException, IOException {
+		// retrieve the id of the book from the request parameter
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
+		// get the Book by id from DB 
+		BookDAO bookDAO  = new BookDAO();
+		Book book = bookDAO.get(bookId);
+		
+		// Get the HttpSession object from the network request
+		HttpSession httpSession = request.getSession();
+		
+		// retrieve the Customer from the session object
+		Customer customer = (Customer) httpSession.getAttribute("loggedInCustomer");
+		
+		// set Book object in the HttpSession object
+		httpSession.setAttribute("book", book);
+		
+		// Check whether the Customer already has written a review for the book
+		Review review = reviewDAO.findByCustomerAndBook(customer.getCustomerId(), bookId);
+		
+		String targetPage = "frontend/write_review_form.jsp";
+		
+		if(review != null) {
+			request.setAttribute("review", review);
+			targetPage = "frontend/review_info.jsp";
+		}
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(targetPage);
+		requestDispatcher.forward(request, response);
+		
+	}
+
+	public void submitReview() throws ServletException, IOException {
+		// retrieve the parameters from the network request
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
+		Integer rating = Integer.parseInt(request.getParameter("rating"));
+		String headline = request.getParameter("headline");
+		String comment = request.getParameter("comment");
+		
+		// get the Book by id from DB 
+		BookDAO bookDAO  = new BookDAO();
+		Book book = bookDAO.get(bookId);
+		
+		// retrieve the Customer from the session object
+		Customer customer = (Customer) request.getSession().getAttribute("loggedInCustomer");
+		
+		// create Review object and set properties
+		Review reviewToBeCreated = new Review();
+		
+		reviewToBeCreated.setBook(book);
+		reviewToBeCreated.setCustomer(customer);
+		reviewToBeCreated.setRating(rating);
+		reviewToBeCreated.setHeadline(headline);
+		reviewToBeCreated.setComment(comment);
+		
+		// create the Review object
+		reviewDAO.create(reviewToBeCreated);
+		
+		// forward the request to message page
+		String messagePage = "frontend/review_submission_result.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
+		requestDispatcher.forward(request, response);
 	}
 
 }

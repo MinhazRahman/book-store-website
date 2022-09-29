@@ -39,7 +39,7 @@
 			
 			<tr>
 				<td><b>Full Name: </b></td>
-				<td>${loggedInCustomer.email}</td>	
+				<td>${loggedInCustomer.fullname}</td>	
 			</tr>
 			
 			<tr>

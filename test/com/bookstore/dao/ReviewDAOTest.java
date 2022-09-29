@@ -95,7 +95,8 @@ public class ReviewDAOTest {
 		assertTrue(numberOfReviews == 2);
 	}
 	
-	@Test void testDelete() {
+	@Test 
+	public void testDelete() {
 		Integer reviewId = 15;
 		// delete a Review by id
 		reviewDAO.delete(reviewId);
@@ -104,6 +105,26 @@ public class ReviewDAOTest {
 		Review review = reviewDAO.get(reviewId);
 		
 		assertNull(review);
+	}
+	
+	@Test
+	public void testfindByCustomerAndBookNotFound() {
+		Integer customerId = 99;
+		Integer bookId = 99;
+		
+		Review review = reviewDAO.findByCustomerAndBook(customerId, bookId);
+		
+		assertNull(review);
+	}
+	
+	@Test
+	public void testfindByCustomerAndBookFound() {
+		Integer customerId = 22;
+		Integer bookId = 37;
+		
+		Review review = reviewDAO.findByCustomerAndBook(customerId, bookId);
+		
+		assertNotNull(review);
 	}
 	
 	@AfterAll
